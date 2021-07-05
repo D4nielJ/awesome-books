@@ -31,11 +31,28 @@ const booksArray = [
 
 // Function insert books in the DOM
 
+function removeBook(bookTitle) {
+  const book = booksArray.filter(book => book.title === bookTitle);
+  const index = booksArray.indexOf(book[0]);
+  booksArray.splice(index, 1);
+  const bookDom = booksIndex.childNodes[index];
+  bookDom.remove();
+  console.log('booksArray: ', booksArray);
+}
+
+const addEventListenerToRemoveBtn = (button) => {
+  button.addEventListener('click', (e) => removeBook(e.target.parentNode.firstChild.textContent));
+}
+
 function addOneBookToDom(i) {
   const li = document.createElement("li");
   li.innerHTML = `<h2>${booksArray[booksArray.length - i].title}</h2>
-    <h3>${booksArray[booksArray.length - i].author}</h3>
-    <button type="button">Remove</button>`;
+    <h3>${booksArray[booksArray.length - i].author}</h3>`;
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.setAttribute('type', 'button');
+  addEventListenerToRemoveBtn(removeButton);
+  li.appendChild(removeButton);
   li.classList.add("books-index__item");
   booksIndex.appendChild(li);
 }
@@ -57,8 +74,6 @@ function addBook(e) {
   booksArray.push(newBook);
   addOneBookToDom(1);
 }
-
-function removeBook() {}
 
 // Events
 
