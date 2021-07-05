@@ -1,7 +1,6 @@
 // Selectors
 
 const formAddBook = document.querySelector("form");
-const submitButton = document.querySelector("form > button");
 const booksIndex = document.querySelector(".books-index");
 
 // Object constructor
@@ -10,8 +9,6 @@ function CreateBook(title, author) {
   this.title = title;
   this.author = author;
 }
-
-// Functions to manage books from the collection
 
 const booksArray = [
   {
@@ -32,17 +29,6 @@ const booksArray = [
   },
 ];
 
-function addBook(e) {
-  e.preventDefault();
-  const newBook = new CreateBook();
-  newBook.title = formAddBook.title.value;
-  newBook.author = formAddBook.author.value;
-  booksArray.push(newBook);
-  addOneBookToDom(1);
-}
-
-function removeBook() {}
-
 // Function insert books in the DOM
 
 function addOneBookToDom(i) {
@@ -60,6 +46,19 @@ function appendCollectionToDom() {
     addOneBookToDom(i);
   }
 }
+
+// Functions to manage books from the collection
+
+function addBook(e) {
+  e.preventDefault();
+  const newBook = new CreateBook();
+  newBook.title = formAddBook.title.value;
+  newBook.author = formAddBook.author.value;
+  booksArray.push(newBook);
+  addOneBookToDom(1);
+}
+
+function removeBook() {}
 
 // Events
 
