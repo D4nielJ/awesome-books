@@ -1,40 +1,38 @@
+import BooksCollection from './booksCollectionModule.js';
+
 // Selectors
 
-const booksArray = [];
 const formAddBook = document.querySelector('form');
-const getBooksIndex = () => document.querySelector('.books-index');
+const booksIndex = document.querySelector('.books-index');
+const bookCollection = new BooksCollection();
 
 const updateStorage = () => {
-  localStorage.setItem('storedBooksIndex', JSON.stringify(booksArray));
+  localStorage.setItem('storedBooksIndex', JSON.stringify(bookCollection.booksArray));
 };
 
-function removeBook(bookTitle) {
-  const book = booksArray.filter((book) => book.title === bookTitle);
-  const index = booksArray.indexOf(book[0]);
-  booksArray.splice(index, 1);
+const removeBook = (bookTitle) => {
+  const index = bookCollection.removeBookFromCollection(bookTitle);
   updateStorage();
-  const booksIndex = getBooksIndex();
-  const bookDom = booksIndex.childNodes[index];
+  const bookDom = booksIndex.children[index];
   bookDom.remove();
-}
+};
 
 const addEventListenerToRemoveBtn = (button) => {
   button.addEventListener('click', (e) => removeBook(e.target.parentNode.firstChild.textContent));
 };
 
-function addOneBookToDom(i) {
+const addOneBookToDom = (i) => {
   const li = document.createElement('li');
-  li.innerHTML = `<h2>${booksArray[booksArray.length - i].title}</h2>
-    <h3>${booksArray[booksArray.length - i].author}</h3>`;
+  li.innerHTML = `<h2>${bookCollection.booksArray[bookCollection.booksArray.length - i].title}</h2>
+    <h3>${bookCollection.booksArray[bookCollection.booksArray.length - i].author}</h3>`;
   const removeButton = document.createElement('button');
   removeButton.textContent = 'Remove';
   removeButton.setAttribute('type', 'button');
   addEventListenerToRemoveBtn(removeButton);
   li.appendChild(removeButton);
   li.classList.add('books-index__item');
-  const booksIndex = getBooksIndex();
   booksIndex.appendChild(li);
-}
+};
 
 // Local Storage
 
@@ -68,29 +66,19 @@ const storageAvailable = (type) => {
 const loadStorage = (storedBooksIndex) => {
   storedBooksIndex = JSON.parse(storedBooksIndex);
   storedBooksIndex.forEach((book) => {
-    booksArray.push(book);
+    bookCollection.booksArray = bookCollection.booksArray.concat(book);
     addOneBookToDom(1);
   });
 };
 
-// Object constructor
-
-function CreateBook(title, author) {
-  this.title = title;
-  this.author = author;
-}
-
 // Functions to manage books from the collection
 
-function addBook(e) {
+const addBook = (e) => {
   e.preventDefault();
-  const newBook = new CreateBook();
-  newBook.title = formAddBook.title.value;
-  newBook.author = formAddBook.author.value;
-  booksArray.push(newBook);
+  bookCollection.addBookToCollection(formAddBook.title.value, formAddBook.author.value);
   updateStorage();
   addOneBookToDom(1);
-}
+};
 
 const load = () => {
   if (storageAvailable('localStorage')) {
