@@ -1,36 +1,25 @@
 // Selectors
 
-let booksArray = [];
+const booksArray = [];
 const formAddBook = document.querySelector('form');
 const getBooksIndex = () => document.querySelector('.books-index');
 
-// Object constructor
-
-function CreateBook(title, author) {
-  this.title = title;
-  this.author = author;
-}
-
-// Function insert books in the DOM
+const updateStorage = () => {
+  localStorage.setItem('storedBooksIndex', JSON.stringify(booksArray));
+};
 
 function removeBook(bookTitle) {
-  console.log(booksArray);
   const book = booksArray.filter((book) => book.title === bookTitle);
   const index = booksArray.indexOf(book[0]);
   booksArray.splice(index, 1);
   updateStorage();
   const booksIndex = getBooksIndex();
-  console.log(index);
-  console.log(booksIndex.childNodes);
   const bookDom = booksIndex.childNodes[index];
-  console.log(bookDom);
   bookDom.remove();
 }
 
 const addEventListenerToRemoveBtn = (button) => {
-  button.addEventListener('click', (e) =>
-    removeBook(e.target.parentNode.firstChild.textContent)
-  );
+  button.addEventListener('click', (e) => removeBook(e.target.parentNode.firstChild.textContent));
 };
 
 function addOneBookToDom(i) {
@@ -47,18 +36,6 @@ function addOneBookToDom(i) {
   booksIndex.appendChild(li);
 }
 
-// Functions to manage books from the collection
-
-function addBook(e) {
-  e.preventDefault();
-  const newBook = new CreateBook();
-  newBook.title = formAddBook.title.value;
-  newBook.author = formAddBook.author.value;
-  booksArray.push(newBook);
-  updateStorage();
-  addOneBookToDom(1);
-}
-
 // Local Storage
 
 const storageAvailable = (type) => {
@@ -71,25 +48,21 @@ const storageAvailable = (type) => {
     return true;
   } catch (e) {
     return (
-      e instanceof DOMException &&
+      e instanceof DOMException
       // everything except Firefox
-      (e.code === 22 ||
+      && (e.code === 22
         // Firefox
-        e.code === 1014 ||
+        || e.code === 1014
         // test name field too, because code might not be present
         // everything except Firefox
-        e.name === 'QuotaExceededError' ||
+        || e.name === 'QuotaExceededError'
         // Firefox
-        e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+        || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')
       // acknowledge QuotaExceededError only if there's something already stored
-      storage &&
-      storage.length !== 0
+      && storage
+      && storage.length !== 0
     );
   }
-};
-
-const updateStorage = () => {
-  localStorage.setItem('storedBooksIndex', JSON.stringify(booksArray));
 };
 
 const loadStorage = (storedBooksIndex) => {
@@ -99,6 +72,25 @@ const loadStorage = (storedBooksIndex) => {
     addOneBookToDom(1);
   });
 };
+
+// Object constructor
+
+function CreateBook(title, author) {
+  this.title = title;
+  this.author = author;
+}
+
+// Functions to manage books from the collection
+
+function addBook(e) {
+  e.preventDefault();
+  const newBook = new CreateBook();
+  newBook.title = formAddBook.title.value;
+  newBook.author = formAddBook.author.value;
+  booksArray.push(newBook);
+  updateStorage();
+  addOneBookToDom(1);
+}
 
 const load = () => {
   if (storageAvailable('localStorage')) {
