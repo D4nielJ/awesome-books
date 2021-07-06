@@ -1,24 +1,8 @@
 // Selectors
 
+const booksArray = [];
 const formAddBook = document.querySelector('form');
 const booksIndex = document.querySelector('.books-index');
-
-class BooksCollection {
-  constructor() {
-    this.booksArray = [];
-  }
-
-  addBookToCollection = (title, author) => {
-    const newBook = new Book(title, author);
-    this.booksArray.push(newBook);
-  }
-
-  removeBookFromCollection = () => {
-
-  }
-
-}
-
 
 const updateStorage = () => {
   localStorage.setItem('storedBooksIndex', JSON.stringify(booksArray));
@@ -87,19 +71,20 @@ const loadStorage = (storedBooksIndex) => {
   });
 };
 
-// Class constructor
-class Book {
-  constructor (title, author) {
-    this.title = title;
-    this.author = author;
-  }
+// Object constructor
+
+function CreateBook(title, author) {
+  this.title = title;
+  this.author = author;
 }
 
 // Functions to manage books from the collection
 
 function addBook(e) {
   e.preventDefault();
-  const newBook = new Book(formAddBook.title.value, formAddBook.author.value);
+  const newBook = new CreateBook();
+  newBook.title = formAddBook.title.value;
+  newBook.author = formAddBook.author.value;
   booksArray.push(newBook);
   updateStorage();
   addOneBookToDom(1);
