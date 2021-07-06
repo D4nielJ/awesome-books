@@ -27,6 +27,12 @@ function removeBook(bookTitle) {
   bookDom.remove();
 }
 
+const addEventListenerToRemoveBtn = (button) => {
+  button.addEventListener('click', (e) =>
+    removeBook(e.target.parentNode.firstChild.textContent)
+  );
+};
+
 function addOneBookToDom(i) {
   const li = document.createElement('li');
   li.innerHTML = `<h2>${booksArray[booksArray.length - i].title}</h2>
@@ -89,7 +95,7 @@ const updateStorage = () => {
 const loadStorage = (storedBooksIndex) => {
   storedBooksIndex = JSON.parse(storedBooksIndex);
   storedBooksIndex.forEach((book) => {
-    booksArray.push(newBook);
+    booksArray.push(book);
     addOneBookToDom(1);
   });
 };
@@ -106,8 +112,3 @@ const load = () => {
 
 window.onload = load;
 formAddBook.addEventListener('submit', addBook);
-const addEventListenerToRemoveBtn = (button) => {
-  button.addEventListener('click', (e) =>
-    removeBook(e.target.parentNode.firstChild.textContent)
-  );
-};
