@@ -15,7 +15,7 @@ It allows the users to create and manage a list of books and save them in their 
 
 ## Authors
 
-👤 **Arturo Alvarez
+👤 **Arturo Alvarez**
 
 - GitHub: [@StarSheriff2](https://github.com/StarSheriff2)
 
