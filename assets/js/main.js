@@ -1,30 +1,4 @@
-/* eslint-disable max-classes-per-file */
-
-// Class constructor
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
-}
-
-class BooksCollection {
-  constructor() {
-    this.booksArray = [];
-  }
-
-  addBookToCollection = (title, author) => {
-    const newBook = new Book(title, author);
-    this.booksArray.push(newBook);
-  };
-
-  removeBookFromCollection = (title) => {
-    const book = this.booksArray.filter((book) => book.title === title);
-    const index = this.booksArray.indexOf(book[0]);
-    this.booksArray.splice(index, 1);
-    return index;
-  };
-}
+import BooksCollection from './booksCollectionModule.js';
 
 // Selectors
 
