@@ -66,7 +66,7 @@ const storageAvailable = (type) => {
 const loadStorage = (storedBooksIndex) => {
   storedBooksIndex = JSON.parse(storedBooksIndex);
   storedBooksIndex.forEach((book) => {
-    bookCollection.booksArray.push(book);
+    bookCollection.booksArray = bookCollection.booksArray.concat(book);
     addOneBookToDom(1);
   });
 };
