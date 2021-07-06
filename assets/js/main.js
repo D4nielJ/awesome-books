@@ -2,7 +2,7 @@
 
 const booksArray = [];
 const formAddBook = document.querySelector('form');
-const getBooksIndex = () => document.querySelector('.books-index');
+const booksIndex = document.querySelector('.books-index');
 
 const updateStorage = () => {
   localStorage.setItem('storedBooksIndex', JSON.stringify(booksArray));
@@ -13,8 +13,7 @@ function removeBook(bookTitle) {
   const index = booksArray.indexOf(book[0]);
   booksArray.splice(index, 1);
   updateStorage();
-  const booksIndex = getBooksIndex();
-  const bookDom = booksIndex.childNodes[index];
+  const bookDom = booksIndex.children[index];
   bookDom.remove();
 }
 
@@ -32,7 +31,6 @@ function addOneBookToDom(i) {
   addEventListenerToRemoveBtn(removeButton);
   li.appendChild(removeButton);
   li.classList.add('books-index__item');
-  const booksIndex = getBooksIndex();
   booksIndex.appendChild(li);
 }
 
