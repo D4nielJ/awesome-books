@@ -20,7 +20,11 @@
   width: 100%;
   margin: 0 2rem;
   margin-bottom: 3rem;
-  border: 0.15rem #000 solid;
+  border: none;
+
+  &--border {
+    border: 0.15rem #000 solid;
+  }
 
   &__item {
     @include d-flex(row, space-between, center);

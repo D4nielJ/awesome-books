@@ -42,6 +42,9 @@ body {
   width: 100%;
   margin: 0 2rem;
   margin-bottom: 3rem;
+  border: none;
+}
+.books-index--border {
   border: 0.15rem #000 solid;
 }
 .books-index__item {
