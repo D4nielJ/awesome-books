@@ -18,7 +18,7 @@ const removeBook = (bookCard, id) => {
 };
 
 const addEventListenerToRemoveBtn = (button) => {
-  button.addEventListener('click', (e) => removeBook(e.target.parentNode, e.target.parentNode.dataset.bookid));
+  button.addEventListener('click', (e) => removeBook(e.target.parentNode, parseInt(e.target.parentNode.dataset.bookid, 10)));
 };
 
 const addOneBookToDom = (i) => {
@@ -87,7 +87,7 @@ const load = () => {
   if (storageAvailable('localStorage')) {
     if (localStorage.length !== 0) {
       const storedBooksIndex = localStorage.getItem('storedBooksIndex');
-      const storedBookIdCounter = localStorage.getItem('storedBookIdCounter');
+      const storedBookIdCounter = parseInt(localStorage.getItem('storedBookIdCounter'), 10);
       loadStorage(storedBooksIndex, storedBookIdCounter);
     }
   }

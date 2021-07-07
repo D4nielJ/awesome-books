@@ -13,9 +13,6 @@ export default class BooksCollection {
   };
 
   removeBookFromCollection = (id) => {
-    console.log(id)
-    console.log(this.booksArray.filter((book) => book.bookid === id));
     this.booksArray = this.booksArray.filter((book) => book.bookid !== id);
-
   };
 }
