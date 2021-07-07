@@ -12,7 +12,7 @@
     <main class="main-container">
       <h1 class="main-title">Awesome Books</h1>
       <ul class="books-index">
-        <li class="books-index__item books-index__item--active" data-bookid="31">
+        <li class="books-index__item" data-bookid="31">
           <h2>hello1</h2>
           <h3>jhasd</h3>
           <button type="button">Remove</button>
@@ -29,9 +29,10 @@
         </li>
         <!-- JS generated elements will be appended here -->
       </ul>
-      <hr />
-      <form>
-        <label for="title">Title</label>
+      <hr class='books-index-hr'>
+      <form class="form-add">
+        <h2 class="form-add__title">Add a new book</h2>
+        <label class="d-none" for="title">Title</label>
         <input
           type="text"
           id="title"
@@ -40,7 +41,7 @@
           required
         />
         <br />
-        <label for="author">Author</label>
+        <label class="d-none" for="author">Author</label>
         <input
           type="text"
           id="author"

@@ -1,3 +1,5 @@
+@use '../abstracts/' as *;
+
 *,
 *::before,
 *::after {
@@ -9,5 +11,11 @@ html {
 }
 
 body {
+  font-family: $font;
   font-size: 1.6rem;
+}
+
+.d-none {
+  position: absolute;
+  left: -5000px;
 }

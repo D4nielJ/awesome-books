@@ -1,0 +1,41 @@
+@use '../abstracts/' as *;
+
+.main-container {
+  @include d-flex(row, center, center, wrap);
+
+  align-content: center;
+  min-height: 100vh;
+}
+
+.main-title {
+  font-size: 3rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.books-index {
+  width: 100%;
+  margin-bottom: 3rem;
+
+  &__item {
+    @include d-flex(row, space-around, center);
+  }
+}
+
+.books-index-hr {
+  border: 0.1rem solid black;
+  margin-bottom: 3rem;
+  width: 50%;
+}
+
+.form-add {
+  width: 100%;
+
+  @include d-flex(column, space-around, center);
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}
