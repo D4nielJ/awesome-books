@@ -2,6 +2,7 @@
 
 .main-container {
   @include d-flex(row, center, center, wrap);
+
   align-content: center;
   min-height: 100vh;
   max-width: 72rem;
@@ -28,6 +29,7 @@
 
   &__item {
     @include d-flex(row, space-between, center);
+
     padding: 0.5rem 1.5rem;
     background: rgb(235, 235, 235);
 
@@ -46,6 +48,7 @@
 .form-add {
   width: 100%;
   padding: 0 8rem;
+
   @include d-flex(column, space-around, center);
 
   &__title {
