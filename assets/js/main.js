@@ -32,9 +32,9 @@ const addEventListenerToRemoveBtn = (button) => {
 
 const addOneBookToDom = (i) => {
   const li = document.createElement("li");
-  if (bookCollection.booksArray.length % 2 === 0) {
-    li.classList.add("books-index__item--alt");
-  }
+  // if (bookCollection.booksArray.length % 2 === 0) {
+  //   li.classList.add("books-index__item--alt");
+  // }
   const newBook =
     bookCollection.booksArray[bookCollection.booksArray.length - i];
   li.innerHTML = `<p class="books-index__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;

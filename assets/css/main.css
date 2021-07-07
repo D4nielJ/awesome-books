@@ -56,7 +56,7 @@ body {
   padding: 0.5rem 1.5rem;
   background: #ebebeb;
 }
-.books-index__item--alt {
+.books-index__item:nth-child(even) {
   background: white;
 }
 
