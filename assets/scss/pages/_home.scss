@@ -2,9 +2,10 @@
 
 .main-container {
   @include d-flex(row, center, center, wrap);
-
   align-content: center;
   min-height: 100vh;
+  max-width: 72rem;
+  margin: 0 auto;
 }
 
 .main-title {
@@ -12,14 +13,23 @@
   width: 100%;
   text-align: center;
   margin-bottom: 4rem;
+  font-weight: bold;
 }
 
 .books-index {
   width: 100%;
+  margin: 0 2rem;
   margin-bottom: 3rem;
+  border: 0.15rem #000 solid;
 
   &__item {
-    @include d-flex(row, space-around, center);
+    @include d-flex(row, space-between, center);
+    padding: 0.5rem 1.5rem;
+    background: rgb(235, 235, 235);
+
+    &--alt {
+      background: rgb(255, 255, 255);
+    }
   }
 }
 
@@ -31,11 +41,22 @@
 
 .form-add {
   width: 100%;
-
+  padding: 0 8rem;
   @include d-flex(column, space-around, center);
 
   &__title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__input {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  &__button {
+    align-self: flex-end;
   }
 }

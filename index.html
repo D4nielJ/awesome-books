@@ -13,20 +13,16 @@
       <h1 class="main-title">Awesome Books</h1>
       <ul class="books-index">
         <li class="books-index__item" data-bookid="31">
-          <h2>hello1</h2>
-          <h3>jhasd</h3>
+          <p class="books-index__title"><span>"Title"</span> by Author</p>
           <button type="button">Remove</button>
         </li>
-        <li class="books-index__item" data-bookid="32">
-          <h2>hello1</h2>
-          <h3>jhasd</h3>
+        <li class="books-index__item books-index__item--alt" data-bookid="31">
+          <p class="books-index__title"><span>"Title"</span> by Author</p>
           <button type="button">Remove</button>
-        </li>
-        <li class="books-index__item" data-bookid="33">
-          <h2>hello1</h2>
-          <h3>jhasd</h3>
+        </li><li class="books-index__item" data-bookid="31">
+          <p class="books-index__title"><span>"Title"</span> by Author</p>
           <button type="button">Remove</button>
-        </li>
+        </li>       
         <!-- JS generated elements will be appended here -->
       </ul>
       <hr class='books-index-hr'>
@@ -38,19 +34,19 @@
           id="title"
           name="title"
           placeholder="enter book title"
+          class="form-add__input"
           required
         />
-        <br />
         <label class="d-none" for="author">Author</label>
         <input
           type="text"
           id="author"
           name="author"
           placeholder="enter book author"
+          class="form-add__input";
           required
         />
-        <br />
-        <button type="submit">Add book</button>
+        <button class="form-add__button" type="submit">Add book</button>
       </form>
     </main>
     <script type="module" src="assets/js/main.js"></script>
