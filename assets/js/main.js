@@ -8,29 +8,31 @@ const bookCollection = new BooksCollection();
 
 const updateStorage = () => {
   localStorage.setItem('storedBooksIndex', JSON.stringify(bookCollection.booksArray));
+  localStorage.setItem('storedBookIdCounter', bookCollection.bookIdCounter);
 };
 
-const removeBook = (bookTitle) => {
-  const index = bookCollection.removeBookFromCollection(bookTitle);
+const removeBook = (bookCard, id) => {
+  bookCollection.removeBookFromCollection(id);
   updateStorage();
-  const bookDom = booksIndex.children[index];
-  bookDom.remove();
+  bookCard.remove();
 };
 
 const addEventListenerToRemoveBtn = (button) => {
-  button.addEventListener('click', (e) => removeBook(e.target.parentNode.firstChild.textContent));
+  button.addEventListener('click', (e) => removeBook(e.target.parentNode, parseInt(e.target.parentNode.dataset.bookid, 10)));
 };
 
 const addOneBookToDom = (i) => {
   const li = document.createElement('li');
-  li.innerHTML = `<h2>${bookCollection.booksArray[bookCollection.booksArray.length - i].title}</h2>
-    <h3>${bookCollection.booksArray[bookCollection.booksArray.length - i].author}</h3>`;
+  const newBook = bookCollection.booksArray[bookCollection.booksArray.length - i];
+  li.innerHTML = `<h2>${newBook.title}</h2>
+    <h3>${newBook.author}</h3>`;
   const removeButton = document.createElement('button');
   removeButton.textContent = 'Remove';
   removeButton.setAttribute('type', 'button');
   addEventListenerToRemoveBtn(removeButton);
   li.appendChild(removeButton);
   li.classList.add('books-index__item');
+  li.setAttribute('data-bookid', `${newBook.bookid}`);
   booksIndex.appendChild(li);
 };
 
@@ -63,12 +65,13 @@ const storageAvailable = (type) => {
   }
 };
 
-const loadStorage = (storedBooksIndex) => {
+const loadStorage = (storedBooksIndex, storedBookIdCounter) => {
   storedBooksIndex = JSON.parse(storedBooksIndex);
   storedBooksIndex.forEach((book) => {
     bookCollection.booksArray = bookCollection.booksArray.concat(book);
     addOneBookToDom(1);
   });
+  bookCollection.bookIdCounter = storedBookIdCounter;
 };
 
 // Functions to manage books from the collection
@@ -83,7 +86,9 @@ const addBook = (e) => {
 const load = () => {
   if (storageAvailable('localStorage')) {
     if (localStorage.length !== 0) {
-      loadStorage(localStorage.getItem('storedBooksIndex'));
+      const storedBooksIndex = localStorage.getItem('storedBooksIndex');
+      const storedBookIdCounter = parseInt(localStorage.getItem('storedBookIdCounter'), 10);
+      loadStorage(storedBooksIndex, storedBookIdCounter);
     }
   }
 };
