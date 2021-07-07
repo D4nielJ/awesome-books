@@ -9,7 +9,7 @@ export default class BooksCollection {
   addBookToCollection = (title, author) => {
     const newBook = new Book(title, author, this.bookIdCounter);
     this.booksArray = this.booksArray.concat(newBook);
-    this.bookIdCounter++;
+    this.bookIdCounter += 1;
   };
 
   removeBookFromCollection = (id) => {
