@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font;
+  font-size: 1.6rem;
+}
+
+.d-none {
+  position: absolute;
+  left: -5000px;
+}
