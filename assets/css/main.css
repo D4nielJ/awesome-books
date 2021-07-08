@@ -48,7 +48,7 @@ nav {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: nowrap;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
 }
@@ -111,7 +111,7 @@ nav .hamburguer-icon__line::after {
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 8rem 2.7rem;
+  padding: 8rem 2.7rem 0 2.7rem;
 }
 
 .generic-container {
@@ -221,7 +221,6 @@ nav .hamburguer-icon__line::after {
 .form-add-container {
   border-radius: 25px;
   width: 100%;
-  padding-bottom: 4.4rem;
 }
 
 .form-add {
@@ -336,6 +335,7 @@ nav .hamburguer-icon__line::after {
   }
 
   .main-container {
+    min-height: auto;
     max-width: 111rem;
     margin: 10rem auto 0;
   }
@@ -453,6 +453,8 @@ nav .hamburguer-icon__line::after {
   footer {
     width: 100%;
     padding: 2rem;
+    position: absolute;
+    bottom: 0;
   }
   footer p {
     text-align: center;

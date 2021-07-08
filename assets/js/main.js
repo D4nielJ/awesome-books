@@ -53,6 +53,8 @@ const updateStorage = () => {
 };
 
 const removeBook = (bookCard, id) => {
+  console.log('li: ', bookCard);
+  console.log('id: ', id);
   bookCollection.removeBookFromCollection(id);
   updateStorage();
   bookCard.remove();
@@ -61,8 +63,8 @@ const removeBook = (bookCard, id) => {
 
 const addEventListenerToRemoveBtn = (button) => {
   button.addEventListener('click', (e) => removeBook(
-    e.target.parentNode,
-    parseInt(e.target.parentNode.dataset.bookid, 10),
+    e.currentTarget.parentNode,
+    parseInt(e.currentTarget.parentNode.dataset.bookid, 10),
   ));
 };
 
@@ -72,10 +74,12 @@ const addOneBookToDom = (i) => {
   //   li.classList.add("books-index__item--alt");
   // }
   const newBook = bookCollection.booksArray[bookCollection.booksArray.length - i];
+  // li.innerHTML = `<p class="books-index__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;
   li.innerHTML = `<p class="books-index__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;
   const removeButton = document.createElement('button');
-  removeButton.textContent = 'Remove';
   removeButton.setAttribute('type', 'button');
+  removeButton.classList.add('books-index__remove-btn');
+  removeButton.innerHTML = '<i class="far fa-trash-alt"></i><span class="only-desktop">Remove</span>';
   addEventListenerToRemoveBtn(removeButton);
   li.appendChild(removeButton);
   li.classList.add('books-index__item');
