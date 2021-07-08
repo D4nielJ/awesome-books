@@ -34,7 +34,9 @@ navLinks.forEach((li) => {
 });
 
 setInterval(() => {
+  /* eslint-disable */
   const dateTime = luxon.DateTime;
+  /* eslint-enable */
   dateDiv.innerHTML = dateTime.now().toLocaleString(dateTime.DATETIME_MED);
 }, 1000);
 
