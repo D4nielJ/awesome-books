@@ -4,17 +4,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <title>Awesome Books</title>
   </head>
   <body>
+    <header>
+      <nav>
+        <div class="logo-container">AB</div>
+        <!-- <div class="logo-container">AWESOME BOOKS</div> -->
+        <button type="button" class="hamburguer-icon">
+          <span class="hamburguer-icon__tap"></span>
+          <span class="hamburguer-icon__line"></span>
+        </button>
+        <!-- <ul>
+          <li>List</li>
+          <li>Add new</li>
+          <li>Contact</li>
+        </ul> -->
+      </nav>
+    </header>
     <main class="main-container">
-      <h1 class="main-title">Awesome Books</h1>
-      <ul class="books-index">
-        <!-- JS generated elements will be appended here -->
-      </ul>
-      <hr class="books-index-hr" />
+      <div class="books-index-container">
+        <h1 class="main-title">All awesome Books</h1>
+        <ul class="books-index">
+          <li class="books-index__item" data-bookid="0">
+            <p class="books-index__title"><span>hello</span> by hello123</p>
+            <!-- <button type="button">Remove</button> -->
+          </li>
+          <li class="books-index__item" data-bookid="0">
+            <p class="books-index__title"><span>hello</span> by hello123</p>
+            <button type="button">Remove</button>
+          </li>
+          <li class="books-index__item" data-bookid="0">
+            <p class="books-index__title"><span>hello</span> by hello123</p>
+            <button type="button">Remove</button>
+          </li>
+          <!-- JS generated elements will be appended here -->
+        </ul>
+        <button class="add-button">
+          <div class="add-button__cross-icon"></div>
+        </button>
+      </div>
+      <!-- <hr class="books-index-hr" />
       <form class="form-add">
         <h2 class="form-add__title">Add a new book</h2>
         <label class="d-none" for="title">Title</label>
@@ -36,7 +74,7 @@
           required
         />
         <button class="form-add__button" type="submit">Add book</button>
-      </form>
+      </form> -->
     </main>
     <script type="module" src="assets/js/main.js"></script>
   </body>

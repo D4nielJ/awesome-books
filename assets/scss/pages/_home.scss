@@ -1,42 +1,159 @@
 @use '../abstracts/' as *;
 
-.main-container {
-  @include d-flex(row, center, center, wrap);
+nav {  
+  margin: 0 auto;
+  max-width: 72rem;
+  padding: 1rem 2.7rem;
+  @include d-flex(row, space-between);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: fit-content;
 
-  align-content: center;
+  & .logo-container {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.165em;
+    font-size: 3.5rem;
+    font-size: 3rem;
+  }
+
+  & .hamburguer-icon {
+    cursor: pointer;
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+    border: none;
+    background: none;
+    position: relative;
+
+    &__tap {
+      cursor: pointer;
+      background: transparent;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3.5rem;
+      height: 3rem;
+    }
+
+    &__line {
+      display: block;
+      width: 2.5rem;
+      height: 0.3rem;
+      background: #000;
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 2.5rem;
+        height: 0.3rem;
+        background: #000;
+        top: 0.8rem;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 2.5rem;
+        height: 0.3rem;
+        background: #000;
+        top: 1.6rem;
+      }
+    }
+  }
+}
+
+.main-container {
+  @include d-flex(column);
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
+  padding: 8rem 2.7rem;
+}
+
+.books-index-container {
+  @include d-flex(column, flex-start, center);
+  padding-bottom: 4.4rem;
+  border-radius: 25px;
+  width: 100%;
+  background: #ddd;
+  position: relative;
 }
 
 .main-title {
   font-size: 3rem;
   width: 100%;
   text-align: center;
-  margin-bottom: 4rem;
   font-weight: bold;
+  padding: 2.1rem 0;
+  background: #ccc;
+  border-radius: 25px;
+  font-size: 2.4rem;
+  margin-bottom: 3.3rem;
 }
 
 .books-index {
   width: 100%;
-  margin: 0 2rem;
-  margin-bottom: 3rem;
   border: none;
-
-  &--border {
-    border: 0.15rem #000 solid;
-  }
+  padding: 0 1.5rem;
 
   &__item {
-    @include d-flex(row, space-between, center);
-
+    @include d-flex(row, center, center);
+    cursor: pointer;
     padding: 0.5rem 1.5rem;
     background: rgb(235, 235, 235);
+    margin-bottom: 3.4rem;
+    padding: 0.7rem 0;
+    border-radius: 1.2rem;
 
-    &:nth-child(even) {
-      background: rgb(255, 255, 255);
+    &:last-child {
+      margin-bottom: 0;
     }
   }
+
+  &__title {
+    @include d-flex(column, center, center);
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.2rem;
+
+    & span {
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+    }
+  }
+}
+
+.add-button {
+    @include d-flex(row, center, center);
+    border: none;
+    border-radius: 50%;
+    width: 4.4rem;
+    height: 4.4rem;
+    position: absolute;
+    bottom: -3.5rem;
+    background: #000;
+
+    &__cross-icon {
+      height: 0.4rem;
+      width: 2.2rem;
+      background: #fff;
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 0.4rem;
+        width: 2.2rem;
+        background: #fff;
+        transform: rotate(90deg);
+      }
+    }
 }
 
 .books-index-hr {
