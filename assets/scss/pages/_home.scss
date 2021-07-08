@@ -103,16 +103,31 @@ nav {
   padding: 0 1.5rem;
 
   &__item {
-    @include d-flex(row, center, center);
+    @include d-flex(row, center, stretch);
 
     cursor: pointer;
     background: rgb(235, 235, 235);
     margin-bottom: 3.4rem;
-    padding: 0.7rem 0;
     border-radius: 1.2rem;
+    position: relative;
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  &__remove-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border: none;
+    margin: 0;
+    border-radius: 1.2rem;
+
+    & .fa-trash-alt {
+      font-size: 2rem;
+      padding: 0 1.5rem;
     }
   }
 
@@ -122,6 +137,7 @@ nav {
     font-style: normal;
     font-weight: 300;
     font-size: 1.2rem;
+    padding: 0.7rem 0;
 
     & span {
       font-weight: 500;

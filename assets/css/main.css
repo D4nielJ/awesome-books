@@ -134,16 +134,29 @@ nav .hamburguer-icon__line::after {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: nowrap;
   cursor: pointer;
   background: #ebebeb;
   margin-bottom: 3.4rem;
-  padding: 0.7rem 0;
   border-radius: 1.2rem;
+  position: relative;
 }
 .books-index__item:last-child {
   margin-bottom: 0;
+}
+.books-index__remove-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border: none;
+  margin: 0;
+  border-radius: 1.2rem;
+}
+.books-index__remove-btn .fa-trash-alt {
+  font-size: 2rem;
+  padding: 0 1.5rem;
 }
 .books-index__title {
   display: flex;
@@ -154,6 +167,7 @@ nav .hamburguer-icon__line::after {
   font-style: normal;
   font-weight: 300;
   font-size: 1.2rem;
+  padding: 0.7rem 0;
 }
 .books-index__title span {
   font-weight: 500;
