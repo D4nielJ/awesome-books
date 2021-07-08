@@ -64,6 +64,15 @@ nav {
       }
     }
   }
+
+  & .date {
+    position: absolute;
+    right: 2.7rem;
+    bottom: -4.5rem;
+    padding: 0.7rem 10rem;
+    background: #ddd;
+    border-radius: 5rem;
+  }
 }
 
 // Books Index
@@ -347,7 +356,7 @@ nav {
     padding-bottom: 4.4rem;
 
     &__inputs-wrapper {
-      @include d-flex (column, space-between, center);
+      @include d-flex(column, space-between, center);
       width: 100%;
       padding: 0 8rem;
 
@@ -357,7 +366,6 @@ nav {
         min-height: 6rem;
 
         &::placeholder {
-
           font-size: 2.4rem;
         }
 
@@ -367,7 +375,6 @@ nav {
         &:last-child {
           margin-bottom: 7.5rem;
         }
-
       }
     }
   }
@@ -407,7 +414,6 @@ nav {
 
     @include d-flex(row, space-around);
   }
-
 
   footer {
     width: 100%;

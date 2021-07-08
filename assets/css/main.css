@@ -101,6 +101,14 @@ nav .hamburguer-icon__line::after {
   background: #000;
   top: 1.6rem;
 }
+nav .date {
+  position: absolute;
+  right: 2.7rem;
+  bottom: -4.5rem;
+  padding: 0.7rem 10rem;
+  background: #ddd;
+  border-radius: 5rem;
+}
 
 .main-container {
   display: flex;

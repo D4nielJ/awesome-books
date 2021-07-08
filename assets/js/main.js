@@ -27,24 +27,16 @@ const displayContainer = (index) => {
     contactContainer.classList.remove('d-none');
     bookIndexContainer.classList.add('d-none');
   }
-}
+};
 
 navLinks.forEach((li) => {
   li.addEventListener('mousedown', (e) => displayContainer(navLinks.indexOf(e.currentTarget)));
 });
 
-// Date
-
-const getTime = () => {
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, '0');
-  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  let yyyy = today.getFullYear();
-  today = mm + '/' + dd + '/' + yyyy;
-  return today;
-};
-
-dateDiv.textContent = `${getTime()}`
+setInterval(() => {
+  const dateTime = luxon.DateTime;
+  dateDiv.innerHTML = dateTime.now().toLocaleString(dateTime.DATETIME_MED);
+}, 1000);
 
 // Front-end
 
@@ -57,12 +49,9 @@ const updateStorage = () => {
 };
 
 const removeBook = (bookCard, id) => {
-  console.log('li: ', bookCard);
-  console.log('id: ', id);
   bookCollection.removeBookFromCollection(id);
   updateStorage();
   bookCard.remove();
-  styleTable();
 };
 
 const addEventListenerToRemoveBtn = (button) => {
