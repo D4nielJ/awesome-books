@@ -187,7 +187,7 @@ nav .hamburguer-icon__line::after {
   width: 4.4rem;
   height: 4.4rem;
   position: absolute;
-  bottom: -3.5rem;
+  bottom: -2.2rem;
   background: #000;
 }
 .add-button__cross-icon {
@@ -208,7 +208,6 @@ nav .hamburguer-icon__line::after {
 
 .form-add-container {
   border-radius: 25px;
-  padding-bottom: 4.4rem;
   width: 100%;
 }
 
@@ -223,6 +222,7 @@ nav .hamburguer-icon__line::after {
   width: 100%;
   background: #ddd;
   position: relative;
+  padding-bottom: 4.4rem;
 }
 .form-add__title {
   width: 100%;
@@ -247,9 +247,6 @@ nav .hamburguer-icon__line::after {
 }
 .form-add__inputs-wrapper__input::placeholder {
   font-size: 1.4rem;
-}
-.form-add__button {
-  align-self: flex-end;
 }
 
 /*# sourceMappingURL=main.css.map */

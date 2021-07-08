@@ -157,7 +157,7 @@ nav {
   width: 4.4rem;
   height: 4.4rem;
   position: absolute;
-  bottom: -3.5rem;
+  bottom: -2.2rem;
   background: #000;
 
   &__cross-icon {
@@ -182,7 +182,6 @@ nav {
 
 .form-add-container {
   border-radius: 25px;
-  padding-bottom: 4.4rem;
   width: 100%;
 }
 
@@ -195,6 +194,7 @@ nav {
   width: 100%;
   background: #ddd;
   position: relative;
+  padding-bottom: 4.4rem;
 
   &__title {
     width: 100%;
@@ -222,9 +222,5 @@ nav {
         font-size: 1.4rem;
       }
     }
-  }
-
-  &__button {
-    align-self: flex-end;
   }
 }
