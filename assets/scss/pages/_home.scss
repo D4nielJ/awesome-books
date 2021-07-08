@@ -67,6 +67,8 @@ nav {
   }
 }
 
+// Books Index
+
 .main-container {
   @include d-flex(column);
 
@@ -176,28 +178,50 @@ nav {
   }
 }
 
-.books-index-hr {
-  border: 0.1rem solid black;
-  margin-bottom: 3rem;
-  width: 50%;
+// New Book Form
+
+.form-add-container {
+  border-radius: 25px;
+  padding-bottom: 4.4rem;
+  width: 100%;
 }
 
 .form-add {
-  width: 100%;
-  padding: 0 8rem;
+  margin-top: 5rem;
 
   @include d-flex(column, space-around, center);
 
+  border-radius: 25px;
+  width: 100%;
+  background: #ddd;
+  position: relative;
+
   &__title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
     width: 100%;
     text-align: center;
+    font-weight: bold;
+    padding: 2.1rem 0;
+    background: #ccc;
+    border-radius: 25px;
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
   }
 
-  &__input {
-    margin-bottom: 1rem;
-    width: 100%;
+  &__inputs-wrapper {
+    padding: 0 1.5rem;
+
+    &__input {
+      height: 4rem;
+      width: 100%;
+      border-radius: 12px;
+      border: none;
+      margin: 1.5rem 0;
+      text-align: center;
+
+      &::placeholder {
+        font-size: 1.4rem;
+      }
+    }
   }
 
   &__button {

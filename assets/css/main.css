@@ -15,6 +15,7 @@ body {
 
 .d-none {
   position: absolute;
+  height: 0;
   left: -5000px;
 }
 
@@ -205,30 +206,47 @@ nav .hamburguer-icon__line::after {
   transform: rotate(90deg);
 }
 
-.books-index-hr {
-  border: 0.1rem solid black;
-  margin-bottom: 3rem;
-  width: 50%;
+.form-add-container {
+  border-radius: 25px;
+  padding-bottom: 4.4rem;
+  width: 100%;
 }
 
 .form-add {
-  width: 100%;
-  padding: 0 8rem;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   flex-wrap: nowrap;
+  border-radius: 25px;
+  width: 100%;
+  background: #ddd;
+  position: relative;
 }
 .form-add__title {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
   width: 100%;
   text-align: center;
+  font-weight: bold;
+  padding: 2.1rem 0;
+  background: #ccc;
+  border-radius: 25px;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
 }
-.form-add__input {
-  margin-bottom: 1rem;
+.form-add__inputs-wrapper {
+  padding: 0 1.5rem;
+}
+.form-add__inputs-wrapper__input {
+  height: 4rem;
   width: 100%;
+  border-radius: 12px;
+  border: none;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+.form-add__inputs-wrapper__input::placeholder {
+  font-size: 1.4rem;
 }
 .form-add__button {
   align-self: flex-end;
