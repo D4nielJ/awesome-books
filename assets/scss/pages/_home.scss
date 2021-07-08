@@ -1,12 +1,11 @@
 @use '../abstracts/' as *;
+@use '../vendor/breakpoints' as mq;
 
 nav {
   margin: 0 auto;
   max-width: 72rem;
   padding: 1rem 2.7rem;
-
   @include d-flex(row, space-between);
-
   position: fixed;
   top: 0;
   width: 100%;
@@ -233,14 +232,6 @@ nav {
     margin-bottom: 0;
   }
 
-  & a,
-  a:visited,
-  a:active,
-  a:hover {
-    text-decoration: none;
-    color: inherit;
-  }
-
   &__name {
     font-weight: 300;
     font-size: 3.6rem;
@@ -264,5 +255,169 @@ nav {
     display: inline-block;
     padding-right: 0.4rem;
     font-size: 1.8rem;
+  }
+}
+
+@include mq.media(">=tablet") {
+  header {
+    width: 100%;
+  }
+
+  nav {
+    max-width: 111rem;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    padding-top: 3rem;
+    @include d-flex(row, space-between, baseline);
+
+    .logo-container {
+      font-size: 3.2rem;
+      letter-spacing: -0.05rem;
+    }
+  }
+
+  .nav-list {
+    @include d-flex;
+
+    & li {
+      margin-left: 6.5rem;
+      font-weight: 500;
+      font-size: 2rem;
+      text-align: right;
+      letter-spacing: 0.3em;
+
+      & li:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .main-container {
+    max-width: 111rem;
+    margin: 10rem auto 0;
+  }
+
+  .main-title {
+    font-weight: 500;
+    font-size: 3.6rem;
+    text-align: left;
+    padding: 3.5rem 9.5rem;
+  }
+
+  .books-index {
+    &__item {
+      padding: 1.6rem 2.8rem;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    &__title {
+      flex-direction: row;
+      align-items: baseline;
+      font-weight: 300;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+
+      & span {
+        margin-right: 0.7rem;
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.4rem;
+      }
+    }
+
+    &__remove-btn {
+      @include d-flex(row, center, center);
+      padding: 0 7rem;
+
+      & .fa-trash-alt {
+        font-size: 2.4rem;
+      }
+
+      & span {
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+      }
+    }
+  }
+
+  .form-add {
+    padding-bottom: 4.4rem;
+
+    &__inputs-wrapper {
+      @include d-flex (column, space-between, center);
+      width: 100%;
+      padding: 0 8rem;
+
+      &__input {
+        padding: 1rem 0;
+        font-size: 2.4rem;
+        min-height: 6rem;
+
+        &::placeholder {
+          
+          font-size: 2.4rem;
+        } 
+
+        &:first-child {
+          margin-bottom: 4.4rem;
+        }
+        &:last-child {
+          margin-bottom: 7.5rem;
+        }
+
+      }
+    }
+  }
+
+  .add-button-desktop {
+    align-self: flex-end;
+    @include d-flex(row, center, center);
+    padding: 1rem 8rem;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    border-width: 0;
+    border-radius: 1.2rem;
+    margin-top: 3rem;
+
+    &__cross-icon {
+      height: 0.4rem;
+      width: 2.2rem;
+      background: #000;
+      position: relative;
+      margin-right: 1.4rem;
+  
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 0.4rem;
+        width: 2.2rem;
+        background: #000;
+        transform: rotate(90deg);
+      }
+    }    
+  }
+
+  .contact-desktop-container {
+    width: 100%;
+    @include d-flex(row, space-around);
+  }
+  
+
+  footer {
+    width: 100%;
+    padding: 2rem;
+
+    & p {
+      text-align: center;
+      margin: 0 auto;
+      font-weight: 300;
+      font-size: 2rem;
+      line-height: 2.8rem;
+    }
   }
 }

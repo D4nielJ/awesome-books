@@ -11,6 +11,14 @@ html {
   font-size: 62.5%;
 }
 
+a,
+a:visited,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-family: $font;
   font-size: 1.6rem;
@@ -23,9 +31,13 @@ body {
 }
 
 .only-mobile {
-  display: none !important;
+  @include mq.media(">=tablet") {
+    display: none !important;
+  }
 }
 
 .only-desktop {
-  display: none !important;
+  @include mq.media("<tablet") {
+    display: none !important;
+  }
 }
