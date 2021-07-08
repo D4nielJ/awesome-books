@@ -2,9 +2,37 @@ import BooksCollection from './booksCollectionModule.js';
 
 // Selectors
 
+const bookIndexContainer = document.querySelector('#books-index-container');
+const formAddContainer = document.querySelector('#form-add-container');
+const contactContainer = document.querySelector('#contact-container');
 const formAddBook = document.querySelector('form');
 const booksIndex = document.querySelector('.books-index');
 const bookCollection = new BooksCollection();
+const navLinks = Array.from(document.querySelectorAll('.nav-list li'));
+
+// Desktop Nav
+
+const displayContainer = (el) => {
+  const linkIndex = navLinks.indexOf(el.currentTarget);
+  if (linkIndex === 0) {
+    formAddContainer.classList.add('d-none');
+    contactContainer.classList.add('d-none');
+    bookIndexContainer.classList.remove('d-none');
+  } else if (linkIndex === 1) {
+    formAddContainer.classList.remove('d-none');
+    contactContainer.classList.add('d-none');
+    bookIndexContainer.classList.add('d-none');
+  } else {
+    formAddContainer.classList.add('d-none');
+    contactContainer.classList.remove('d-none');
+    bookIndexContainer.classList.add('d-none');
+  }
+}
+
+navLinks.forEach((li) => {
+  li.addEventListener('mousedown', (e) => displayContainer(e));
+});
+
 
 // Front-end
 

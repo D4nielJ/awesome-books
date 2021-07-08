@@ -357,9 +357,9 @@ nav {
         min-height: 6rem;
 
         &::placeholder {
-          
+
           font-size: 2.4rem;
-        } 
+        }
 
         &:first-child {
           margin-bottom: 4.4rem;
@@ -389,7 +389,7 @@ nav {
       background: #000;
       position: relative;
       margin-right: 1.4rem;
-  
+
       &::before {
         content: "";
         display: block;
@@ -399,14 +399,14 @@ nav {
         background: #000;
         transform: rotate(90deg);
       }
-    }    
+    }
   }
 
   .contact-desktop-container {
     width: 100%;
     @include d-flex(row, space-around);
   }
-  
+
 
   footer {
     width: 100%;

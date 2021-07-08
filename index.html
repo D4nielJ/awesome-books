@@ -33,10 +33,10 @@
       </nav>
     </header>
     <main class="main-container">
-      <div class="books-index-container generic-container">
+      <div class="books-index-container generic-container" id="books-index-container">
         <h1 class="main-title">All awesome Books</h1>
         <ul class="books-index">
-          <li class="books-index__item" data-bookid="0">
+          <!-- <li class="books-index__item" data-bookid="0">
             <p class="books-index__title"><span>hello</span> by hello123</p>
             <button class="books-index__remove-btn" type="button"><i class="far fa-trash-alt"></i><span class="only-desktop">Remove</span></button>
           </li>
@@ -47,14 +47,14 @@
           <li class="books-index__item" data-bookid="0">
             <p class="books-index__title"><span>hello</span> by hello123</p>
             <button type="button">Remove</button>
-          </li>
+          </li> -->
           <!-- JS generated elements will be appended here -->
         </ul>
         <button class="add-button only-mobile">
           <div class="add-button__cross-icon"></div>
         </button>
       </div>
-      <div class="form-add-container">
+      <div class="form-add-container d-none" id="form-add-container">
         <form class="form-add">
           <h2 class="form-add__title">Add a new book</h2>
           <div class="form-add__inputs-wrapper">
@@ -86,7 +86,7 @@
           </button>
         </form>
       </div>
-      <div class="contact-container generic-container">
+      <div class="contact-container generic-container d-none" id="contact-container">
         <h2 class="main-title">Contact us</h2>
         <div class="contact-desktop-container">
           <div class="contact-card">
