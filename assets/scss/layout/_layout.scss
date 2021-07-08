@@ -20,10 +20,10 @@ body {
   left: -5000px;
 }
 
-only-mobile {
-
+.only-mobile {
+  display: none !important;
 }
 
-only-desktop {
-  
+.only-desktop {
+  display: none !important;
 }

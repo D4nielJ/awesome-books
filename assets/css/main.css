@@ -18,6 +18,14 @@ body {
   left: -5000px;
 }
 
+.only-mobile {
+  display: none !important;
+}
+
+.only-desktop {
+  display: none !important;
+}
+
 nav {
   margin: 0 auto;
   max-width: 72rem;
@@ -30,7 +38,6 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  height: fit-content;
 }
 nav .logo-container {
   font-family: "Montserrat", sans-serif;
@@ -108,7 +115,6 @@ nav .hamburguer-icon__line::after {
 }
 
 .main-title {
-  font-size: 3rem;
   width: 100%;
   text-align: center;
   font-weight: bold;
@@ -131,7 +137,6 @@ nav .hamburguer-icon__line::after {
   align-items: center;
   flex-wrap: nowrap;
   cursor: pointer;
-  padding: 0.5rem 1.5rem;
   background: #ebebeb;
   margin-bottom: 3.4rem;
   padding: 0.7rem 0;
