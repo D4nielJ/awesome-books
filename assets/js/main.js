@@ -9,16 +9,16 @@ const formAddBook = document.querySelector('form');
 const booksIndex = document.querySelector('.books-index');
 const bookCollection = new BooksCollection();
 const navLinks = Array.from(document.querySelectorAll('.nav-list li'));
+const dateDiv = document.querySelector('.date');
 
 // Desktop Nav
 
-const displayContainer = (el) => {
-  const linkIndex = navLinks.indexOf(el.currentTarget);
-  if (linkIndex === 0) {
+const displayContainer = (index) => {
+  if (index === 0) {
     formAddContainer.classList.add('d-none');
     contactContainer.classList.add('d-none');
     bookIndexContainer.classList.remove('d-none');
-  } else if (linkIndex === 1) {
+  } else if (index === 1) {
     formAddContainer.classList.remove('d-none');
     contactContainer.classList.add('d-none');
     bookIndexContainer.classList.add('d-none');
@@ -30,19 +30,23 @@ const displayContainer = (el) => {
 }
 
 navLinks.forEach((li) => {
-  li.addEventListener('mousedown', (e) => displayContainer(e));
+  li.addEventListener('mousedown', (e) => displayContainer(navLinks.indexOf(e.currentTarget)));
 });
 
+// Date
+
+const getTime = () => {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  let yyyy = today.getFullYear();
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+};
+
+dateDiv.textContent = `${getTime()}`
 
 // Front-end
-
-const styleTable = () => {
-  if (bookCollection.booksArray.length === 0) {
-    booksIndex.classList.remove('books-index--border');
-  } else {
-    booksIndex.classList.add('books-index--border');
-  }
-};
 
 const updateStorage = () => {
   localStorage.setItem(
@@ -70,11 +74,7 @@ const addEventListenerToRemoveBtn = (button) => {
 
 const addOneBookToDom = (i) => {
   const li = document.createElement('li');
-  // if (bookCollection.booksArray.length % 2 === 0) {
-  //   li.classList.add("books-index__item--alt");
-  // }
   const newBook = bookCollection.booksArray[bookCollection.booksArray.length - i];
-  // li.innerHTML = `<p class="books-index__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;
   li.innerHTML = `<p class="books-index__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;
   const removeButton = document.createElement('button');
   removeButton.setAttribute('type', 'button');
@@ -135,7 +135,7 @@ const addBook = (e) => {
   );
   updateStorage();
   addOneBookToDom(1);
-  styleTable();
+  displayContainer(0);
 };
 
 const load = () => {
@@ -149,7 +149,6 @@ const load = () => {
       loadStorage(storedBooksIndex, storedBookIdCounter);
     }
   }
-  styleTable();
 };
 
 // Events
