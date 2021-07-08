@@ -102,7 +102,7 @@ nav .hamburguer-icon__line::after {
   padding: 8rem 2.7rem;
 }
 
-.books-index-container {
+.generic-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -209,6 +209,7 @@ nav .hamburguer-icon__line::after {
 .form-add-container {
   border-radius: 25px;
   width: 100%;
+  padding-bottom: 4.4rem;
 }
 
 .form-add {
@@ -247,6 +248,46 @@ nav .hamburguer-icon__line::after {
 }
 .form-add__inputs-wrapper__input::placeholder {
   font-size: 1.4rem;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 3.6rem;
+}
+.contact-card:last-child {
+  margin-bottom: 0;
+}
+.contact-card a,
+.contact-card a:visited,
+.contact-card a:active,
+.contact-card a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.contact-card__name {
+  font-weight: 300;
+  font-size: 3.6rem;
+  line-height: 4.2rem;
+  margin-bottom: 0.8rem;
+}
+.contact-card__links {
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+}
+.contact-card__link {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  margin-right: 1.1rem;
+}
+.contact-card .fab {
+  display: inline-block;
+  padding-right: 0.4rem;
+  font-size: 1.8rem;
 }
 
 /*# sourceMappingURL=main.css.map */
