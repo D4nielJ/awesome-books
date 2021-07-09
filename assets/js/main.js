@@ -124,6 +124,7 @@ const addBook = (e) => {
     formAddBook.title.value,
     formAddBook.author.value,
   );
+  formAddBook.reset();
   updateStorage();
   addOneBookToDom(1);
   displayContainer(0);
