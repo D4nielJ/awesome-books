@@ -1,3 +1,4 @@
+@use '../vendor/breakpoints' as mq;
 @use '../abstracts/' as *;
 
 *,
@@ -10,12 +11,41 @@ html {
   font-size: 62.5%;
 }
 
+a,
+a:visited,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-family: $font;
   font-size: 1.6rem;
+
+  @include mq.media('>=tablet') {
+    position: relative;
+    min-height: 100vh;
+  }
 }
 
 .d-none {
-  position: absolute;
-  left: -5000px;
+  display: none !important;
+  // position: absolute;
+  // height: 0;
+  // margin: 0;
+  // padding: 0;
+  // left: -5000px;
+}
+
+.only-mobile {
+  @include mq.media(">=tablet") {
+    display: none !important;
+  }
+}
+
+.only-desktop {
+  @include mq.media("<tablet") {
+    display: none !important;
+  }
 }

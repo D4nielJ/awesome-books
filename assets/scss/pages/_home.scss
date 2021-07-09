@@ -1,69 +1,456 @@
 @use '../abstracts/' as *;
+@use '../vendor/breakpoints' as mq;
+
+nav {
+  margin: 0 auto;
+  max-width: 72rem;
+  padding: 1rem 2.7rem;
+
+  @include d-flex(row, space-between);
+
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  & .logo-container {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: -0.165em;
+    font-size: 3.5rem;
+    font-size: 3rem;
+  }
+
+  & .hamburguer-icon {
+    cursor: pointer;
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+    border: none;
+    background: none;
+    position: relative;
+
+    &__tap {
+      cursor: pointer;
+      background: transparent;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3.5rem;
+      height: 3rem;
+    }
+
+    &__line {
+      display: block;
+      width: 2.5rem;
+      height: 0.3rem;
+      background: #000;
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 2.5rem;
+        height: 0.3rem;
+        background: #000;
+        top: 0.8rem;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 2.5rem;
+        height: 0.3rem;
+        background: #000;
+        top: 1.6rem;
+      }
+    }
+  }
+
+  & .date {
+    position: absolute;
+    right: 2.7rem;
+    bottom: -7rem;
+    padding: 0.7rem 10rem;
+    background: #ddd;
+    border-radius: 5rem;
+  }
+}
+
+// Books Index
 
 .main-container {
-  @include d-flex(row, center, center, wrap);
+  @include d-flex(column);
 
-  align-content: center;
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
+  padding: 8rem 2.7rem 0 2rem;
+}
+
+.generic-container {
+  @include d-flex(column, flex-start, flex-start);
+
+  padding-bottom: 4.4rem;
+  border-radius: 25px;
+  width: 100%;
+  background: #ddd;
+  // position: relative;
 }
 
 .main-title {
-  font-size: 3rem;
   width: 100%;
   text-align: center;
-  margin-bottom: 4rem;
   font-weight: bold;
+  padding: 2.1rem 0;
+  background: #ccc;
+  border-radius: 25px;
+  font-size: 2.4rem;
+  margin-bottom: 3.3rem;
 }
 
 .books-index {
   width: 100%;
-  margin: 0 2rem;
-  margin-bottom: 3rem;
   border: none;
-
-  &--border {
-    border: 0.15rem #000 solid;
-  }
+  padding: 0 1.5rem;
 
   &__item {
-    @include d-flex(row, space-between, center);
+    @include d-flex(row, center, stretch);
 
-    padding: 0.5rem 1.5rem;
+    cursor: pointer;
     background: rgb(235, 235, 235);
+    margin-bottom: 3.4rem;
+    border-radius: 1.2rem;
+    position: relative;
 
-    &:nth-child(even) {
-      background: rgb(255, 255, 255);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__remove-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border: none;
+    margin: 0;
+    border-radius: 1.2rem;
+
+    & .fa-trash-alt {
+      font-size: 2rem;
+      padding: 0 1.5rem;
+    }
+  }
+
+  &__title {
+    @include d-flex(column, center, center);
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.2rem;
+    padding: 0.7rem 0;
+
+    & span {
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
     }
   }
 }
 
-.books-index-hr {
-  border: 0.1rem solid black;
-  margin-bottom: 3rem;
-  width: 50%;
+.add-button {
+  @include d-flex(row, center, center);
+
+  border: none;
+  border-radius: 50%;
+  width: 4.4rem;
+  height: 4.4rem;
+  position: absolute;
+  bottom: -2.2rem;
+  background: #000;
+
+  &__cross-icon {
+    height: 0.4rem;
+    width: 2.2rem;
+    background: #fff;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 0.4rem;
+      width: 2.2rem;
+      background: #fff;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+// New Book Form
+
+.form-add-container {
+  border-radius: 25px;
+  width: 100%;
 }
 
 .form-add {
-  width: 100%;
-  padding: 0 8rem;
+  @include d-flex(column, space-around, flex-start);
 
-  @include d-flex(column, space-around, center);
+  border-radius: 25px;
+  width: 100%;
+  background: #ddd;
+  position: relative;
+  padding-bottom: 4.4rem;
 
   &__title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
     width: 100%;
     text-align: center;
+    font-weight: bold;
+    padding: 2.1rem 0;
+    background: #ccc;
+    border-radius: 25px;
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
   }
 
-  &__input {
-    margin-bottom: 1rem;
+  &__inputs-wrapper {
+    padding: 0 1.5rem;
+
+    &__input {
+      height: 4rem;
+      width: 100%;
+      border-radius: 12px;
+      border: none;
+      margin: 1.5rem 0;
+      text-align: center;
+
+      &::placeholder {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+.contact-card {
+  @include d-flex(column, center, center);
+
+  margin-bottom: 3.6rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__name {
+    font-weight: 300;
+    font-size: 3.6rem;
+    line-height: 4.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  &__links {
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    margin-right: 1.1rem;
+  }
+
+  & .fab {
+    display: inline-block;
+    padding-right: 0.4rem;
+    font-size: 1.8rem;
+  }
+}
+
+// Media Queries
+
+@include mq.media(">=tablet") {
+  header {
     width: 100%;
   }
 
-  &__button {
+  nav {
+    position: absolute;
+    max-width: 111rem;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 3rem;
+
+    @include d-flex(row, space-between, baseline);
+
+    .logo-container {
+      font-size: 3.2rem;
+      letter-spacing: -0.05rem;
+    }
+  }
+
+  .nav-list {
+    @include d-flex;
+
+    & li {
+      margin-left: 6.5rem;
+      font-weight: 500;
+      font-size: 2rem;
+      text-align: right;
+      letter-spacing: 0.3em;
+
+      & li:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .main-container {
+    min-height: 0;
+    max-width: 111rem;
+    margin: 0 auto;
+    padding: 20rem 0 10rem;
+  }
+
+  .main-title {
+    font-weight: 500;
+    font-size: 3.6rem;
+    text-align: left;
+    padding: 3.5rem 9.5rem;
+  }
+
+  .books-index {
+    &__item {
+      padding: 1.6rem 2.8rem;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    &__title {
+      flex-direction: row;
+      align-items: baseline;
+      font-weight: 300;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+
+      & span {
+        margin-right: 0.7rem;
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.4rem;
+      }
+    }
+
+    &__remove-btn {
+      cursor: pointer;
+
+      @include d-flex(row, center, center);
+
+      padding: 0 7rem;
+
+      & .fa-trash-alt {
+        font-size: 2.4rem;
+      }
+
+      & span {
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+      }
+    }
+  }
+
+  .form-add {
+    padding-bottom: 4.4rem;
+
+    &__title {
+      font-weight: 500;
+      font-size: 3.6rem;
+      text-align: left;
+      padding: 3.5rem 9.5rem;
+    }
+
+    &__inputs-wrapper {
+      @include d-flex(column, space-between, center);
+
+      width: 100%;
+      padding: 0 8rem;
+
+      &__input {
+        padding: 1rem 0;
+        font-size: 2.4rem;
+        min-height: 6rem;
+
+        &::placeholder {
+          font-size: 2.4rem;
+        }
+
+        &:first-child {
+          margin-bottom: 4.4rem;
+        }
+
+        &:last-child {
+          margin-bottom: 7.5rem;
+        }
+      }
+    }
+  }
+
+  .add-button-desktop {
+    cursor: pointer;
     align-self: flex-end;
+
+    @include d-flex(row, center, center);
+
+    padding: 1rem 8rem;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    border-width: 0;
+    border-radius: 1.2rem;
+    margin-top: 3rem;
+
+    &__cross-icon {
+      height: 0.4rem;
+      width: 2.2rem;
+      background: #000;
+      position: relative;
+      margin-right: 1.4rem;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 0.4rem;
+        width: 2.2rem;
+        background: #000;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .contact-desktop-container {
+    width: 100%;
+
+    @include d-flex(row, space-around);
+  }
+
+  footer {
+    padding: 2rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    & p {
+      text-align: center;
+      margin: 0 auto;
+      font-weight: 300;
+      font-size: 2rem;
+      line-height: 2.8rem;
+    }
   }
 }

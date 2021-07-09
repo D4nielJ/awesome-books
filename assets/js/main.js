@@ -2,19 +2,45 @@ import BooksCollection from './booksCollectionModule.js';
 
 // Selectors
 
+const bookIndexContainer = document.querySelector('#books-index-container');
+const formAddContainer = document.querySelector('#form-add-container');
+const contactContainer = document.querySelector('#contact-container');
 const formAddBook = document.querySelector('form');
 const booksIndex = document.querySelector('.books-index');
 const bookCollection = new BooksCollection();
+const navLinks = Array.from(document.querySelectorAll('.nav-list li'));
+const dateDiv = document.querySelector('.date');
 
-// Front-end
+// Desktop Nav
 
-const styleTable = () => {
-  if (bookCollection.booksArray.length === 0) {
-    booksIndex.classList.remove('books-index--border');
+const displayContainer = (index) => {
+  if (index === 0) {
+    formAddContainer.classList.add('d-none');
+    contactContainer.classList.add('d-none');
+    bookIndexContainer.classList.remove('d-none');
+  } else if (index === 1) {
+    formAddContainer.classList.remove('d-none');
+    contactContainer.classList.add('d-none');
+    bookIndexContainer.classList.add('d-none');
   } else {
-    booksIndex.classList.add('books-index--border');
+    formAddContainer.classList.add('d-none');
+    contactContainer.classList.remove('d-none');
+    bookIndexContainer.classList.add('d-none');
   }
 };
+
+navLinks.forEach((li) => {
+  li.addEventListener('mousedown', (e) => displayContainer(navLinks.indexOf(e.currentTarget)));
+});
+
+setInterval(() => {
+  /* eslint-disable */
+  const dateTime = luxon.DateTime;
+  /* eslint-enable */
+  dateDiv.innerHTML = dateTime.now().toLocaleString(dateTime.DATETIME_MED);
+}, 1000);
+
+// Front-end
 
 const updateStorage = () => {
   localStorage.setItem(
@@ -28,26 +54,23 @@ const removeBook = (bookCard, id) => {
   bookCollection.removeBookFromCollection(id);
   updateStorage();
   bookCard.remove();
-  styleTable();
 };
 
 const addEventListenerToRemoveBtn = (button) => {
   button.addEventListener('click', (e) => removeBook(
-    e.target.parentNode,
-    parseInt(e.target.parentNode.dataset.bookid, 10),
+    e.currentTarget.parentNode,
+    parseInt(e.currentTarget.parentNode.dataset.bookid, 10),
   ));
 };
 
 const addOneBookToDom = (i) => {
   const li = document.createElement('li');
-  // if (bookCollection.booksArray.length % 2 === 0) {
-  //   li.classList.add("books-index__item--alt");
-  // }
   const newBook = bookCollection.booksArray[bookCollection.booksArray.length - i];
   li.innerHTML = `<p class="books-index__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;
   const removeButton = document.createElement('button');
-  removeButton.textContent = 'Remove';
   removeButton.setAttribute('type', 'button');
+  removeButton.classList.add('books-index__remove-btn');
+  removeButton.innerHTML = '<i class="far fa-trash-alt"></i><span class="only-desktop">Remove</span>';
   addEventListenerToRemoveBtn(removeButton);
   li.appendChild(removeButton);
   li.classList.add('books-index__item');
@@ -103,7 +126,7 @@ const addBook = (e) => {
   );
   updateStorage();
   addOneBookToDom(1);
-  styleTable();
+  displayContainer(0);
 };
 
 const load = () => {
@@ -117,7 +140,6 @@ const load = () => {
       loadStorage(storedBooksIndex, storedBookIdCounter);
     }
   }
-  styleTable();
 };
 
 // Events
