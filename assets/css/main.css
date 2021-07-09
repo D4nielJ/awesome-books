@@ -20,11 +20,15 @@ body {
   font-family: "roboto", sans-serif;
   font-size: 1.6rem;
 }
+@media (min-width: 768px) {
+  body {
+    position: relative;
+    min-height: 100vh;
+  }
+}
 
 .d-none {
-  position: absolute;
-  height: 0;
-  left: -5000px;
+  display: none !important;
 }
 
 @media (min-width: 768px) {
@@ -104,7 +108,7 @@ nav .hamburguer-icon__line::after {
 nav .date {
   position: absolute;
   right: 2.7rem;
-  bottom: -4.5rem;
+  bottom: -7rem;
   padding: 0.7rem 10rem;
   background: #ddd;
   border-radius: 5rem;
@@ -119,20 +123,19 @@ nav .date {
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 8rem 2.7rem 0 2.7rem;
+  padding: 8rem 2.7rem 0 2rem;
 }
 
 .generic-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
   padding-bottom: 4.4rem;
   border-radius: 25px;
   width: 100%;
   background: #ddd;
-  position: relative;
 }
 
 .main-title {
@@ -232,11 +235,10 @@ nav .date {
 }
 
 .form-add {
-  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
   border-radius: 25px;
   width: 100%;
@@ -308,8 +310,10 @@ nav .date {
   }
 
   nav {
+    position: absolute;
     max-width: 111rem;
     margin: 0 auto;
+    top: 0;
     left: 0;
     right: 0;
     padding-top: 3rem;
@@ -343,9 +347,10 @@ nav .date {
   }
 
   .main-container {
-    min-height: auto;
+    min-height: 0;
     max-width: 111rem;
-    margin: 10rem auto 0;
+    margin: 0 auto;
+    padding: 20rem 0 10rem;
   }
 
   .main-title {
@@ -374,6 +379,7 @@ nav .date {
     line-height: 2.4rem;
   }
   .books-index__remove-btn {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -392,6 +398,12 @@ nav .date {
 
   .form-add {
     padding-bottom: 4.4rem;
+  }
+  .form-add__title {
+    font-weight: 500;
+    font-size: 3.6rem;
+    text-align: left;
+    padding: 3.5rem 9.5rem;
   }
   .form-add__inputs-wrapper {
     display: flex;
@@ -418,6 +430,7 @@ nav .date {
   }
 
   .add-button-desktop {
+    cursor: pointer;
     align-self: flex-end;
     display: flex;
     flex-direction: row;
@@ -459,10 +472,11 @@ nav .date {
   }
 
   footer {
-    width: 100%;
     padding: 2rem;
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
   }
   footer p {
     text-align: center;

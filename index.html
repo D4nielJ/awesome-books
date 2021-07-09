@@ -29,12 +29,12 @@
           <span class="hamburguer-icon__tap"></span>
           <span class="hamburguer-icon__line"></span>
         </button>
-        <ul class="nav-list">
+        <ul class="nav-list only-desktop">
           <li><a href="#">List</a></li>
           <li><a href="#">Add new</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-        <div class="date"></div>
+        <div class="date only-desktop"></div>
       </nav>
     </header>
     <main class="main-container">
@@ -46,8 +46,8 @@
         <ul class="books-index">
           <!-- JS generated elements will be appended here -->
         </ul>
-        <button class="add-button only-mobile">
-          <div class="add-button__cross-icon"></div>
+        <button type="button" class="add-button only-mobile">
+          <span class="add-button__cross-icon"></span>
         </button>
       </div>
       <div class="form-add-container d-none" id="form-add-container">
@@ -76,12 +76,12 @@
               class="form-add__button add-button-desktop only-desktop"
               type="submit"
             >
-              <div class="add-button-desktop__cross-icon"></div>
-              <p>Add</p>
+              <span class="add-button-desktop__cross-icon"></span>
+              <span>Add</span>
             </button>
           </div>
           <button class="form-add__button add-button only-mobile" type="submit">
-            <div class="add-button__cross-icon"></div>
+            <span class="add-button__cross-icon"></span>
           </button>
         </form>
       </div>

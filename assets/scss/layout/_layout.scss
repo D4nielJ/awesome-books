@@ -22,12 +22,20 @@ a:hover {
 body {
   font-family: $font;
   font-size: 1.6rem;
+
+  @include mq.media('>=tablet') {
+    position: relative;
+    min-height: 100vh;
+  } 
 }
 
 .d-none {
-  position: absolute;
-  height: 0;
-  left: -5000px;
+  display: none !important;
+  // position: absolute;
+  // height: 0;
+  // margin: 0;
+  // padding: 0;
+  // left: -5000px;
 }
 
 .only-mobile {

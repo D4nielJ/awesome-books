@@ -68,7 +68,7 @@ nav {
   & .date {
     position: absolute;
     right: 2.7rem;
-    bottom: -4.5rem;
+    bottom: -7rem;
     padding: 0.7rem 10rem;
     background: #ddd;
     border-radius: 5rem;
@@ -79,20 +79,19 @@ nav {
 
 .main-container {
   @include d-flex(column);
-
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 8rem 2.7rem 0 2.7rem;
+  padding: 8rem 2.7rem 0 2rem;
 }
 
 .generic-container {
-  @include d-flex(column, flex-start, center);
+  @include d-flex(column, flex-start, flex-start);
   padding-bottom: 4.4rem;
   border-radius: 25px;
   width: 100%;
   background: #ddd;
-  position: relative;
+  // position: relative;
 }
 
 .main-title {
@@ -193,9 +192,7 @@ nav {
 }
 
 .form-add {
-  margin-top: 5rem;
-
-  @include d-flex(column, space-around, center);
+  @include d-flex(column, space-around, flex-start);
 
   border-radius: 25px;
   width: 100%;
@@ -266,14 +263,18 @@ nav {
   }
 }
 
+// Media Queries
+
 @include mq.media(">=tablet") {
   header {
     width: 100%;
   }
 
   nav {
+    position: absolute;
     max-width: 111rem;
     margin: 0 auto;
+    top: 0;
     left: 0;
     right: 0;
     padding-top: 3rem;
@@ -302,9 +303,10 @@ nav {
   }
 
   .main-container {
-    min-height: auto;
+    min-height: 0;
     max-width: 111rem;
-    margin: 10rem auto 0;
+    margin: 0 auto;
+    padding: 20rem 0 10rem;
   }
 
   .main-title {
@@ -337,6 +339,7 @@ nav {
     }
 
     &__remove-btn {
+      cursor: pointer;
       @include d-flex(row, center, center);
       padding: 0 7rem;
 
@@ -354,6 +357,13 @@ nav {
 
   .form-add {
     padding-bottom: 4.4rem;
+
+    &__title {
+      font-weight: 500;
+      font-size: 3.6rem;
+      text-align: left;
+      padding: 3.5rem 9.5rem;
+    }
 
     &__inputs-wrapper {
       @include d-flex(column, space-between, center);
@@ -380,6 +390,7 @@ nav {
   }
 
   .add-button-desktop {
+    cursor: pointer;
     align-self: flex-end;
     @include d-flex(row, center, center);
     padding: 1rem 8rem;
@@ -411,15 +422,15 @@ nav {
 
   .contact-desktop-container {
     width: 100%;
-
     @include d-flex(row, space-around);
   }
 
   footer {
-    width: 100%;
     padding: 2rem;
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
 
     & p {
       text-align: center;
