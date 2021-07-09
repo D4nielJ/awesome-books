@@ -5,7 +5,9 @@ nav {
   margin: 0 auto;
   max-width: 72rem;
   padding: 1rem 2.7rem;
+
   @include d-flex(row, space-between);
+
   position: absolute;
   top: 0;
   width: 100%;
@@ -79,6 +81,7 @@ nav {
 
 .main-container {
   @include d-flex(column);
+
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
@@ -87,6 +90,7 @@ nav {
 
 .generic-container {
   @include d-flex(column, flex-start, flex-start);
+
   padding-bottom: 4.4rem;
   border-radius: 25px;
   width: 100%;
@@ -231,6 +235,7 @@ nav {
 
 .contact-card {
   @include d-flex(column, center, center);
+
   margin-bottom: 3.6rem;
 
   &:last-child {
@@ -278,6 +283,7 @@ nav {
     left: 0;
     right: 0;
     padding-top: 3rem;
+
     @include d-flex(row, space-between, baseline);
 
     .logo-container {
@@ -340,7 +346,9 @@ nav {
 
     &__remove-btn {
       cursor: pointer;
+
       @include d-flex(row, center, center);
+
       padding: 0 7rem;
 
       & .fa-trash-alt {
@@ -367,6 +375,7 @@ nav {
 
     &__inputs-wrapper {
       @include d-flex(column, space-between, center);
+
       width: 100%;
       padding: 0 8rem;
 
@@ -382,6 +391,7 @@ nav {
         &:first-child {
           margin-bottom: 4.4rem;
         }
+
         &:last-child {
           margin-bottom: 7.5rem;
         }
@@ -392,7 +402,9 @@ nav {
   .add-button-desktop {
     cursor: pointer;
     align-self: flex-end;
+
     @include d-flex(row, center, center);
+
     padding: 1rem 8rem;
     font-weight: 500;
     font-size: 2.4rem;
@@ -422,6 +434,7 @@ nav {
 
   .contact-desktop-container {
     width: 100%;
+
     @include d-flex(row, space-around);
   }
 
