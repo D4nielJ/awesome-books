@@ -20,6 +20,7 @@ a:hover {
 body {
   font-family: "roboto", sans-serif;
   font-size: 1.6rem;
+  background-color: #000;
 }
 @media (min-width: 768px) {
   body {
@@ -44,6 +45,26 @@ body {
   }
 }
 
+.background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+}
+.background::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 75%;
+  background: #86eade;
+  bottom: -55%;
+  border-radius: 50%;
+}
+
 nav {
   margin: 0 auto;
   max-width: 72rem;
@@ -62,6 +83,7 @@ nav .logo-container {
   letter-spacing: -0.165em;
   font-size: 3.5rem;
   font-size: 3rem;
+  color: #fff;
 }
 nav .hamburguer-icon {
   cursor: pointer;
@@ -85,16 +107,17 @@ nav .hamburguer-icon__line {
   display: block;
   width: 2.5rem;
   height: 0.3rem;
-  background: #000;
+  background: #fedc97;
   position: relative;
 }
 nav .hamburguer-icon__line::before {
   content: "";
   display: block;
   position: absolute;
-  width: 2.5rem;
+  width: 2rem;
+  right: 0;
   height: 0.3rem;
-  background: #000;
+  background: #fedc97;
   top: 0.8rem;
 }
 nav .hamburguer-icon__line::after {
@@ -103,7 +126,7 @@ nav .hamburguer-icon__line::after {
   position: absolute;
   width: 2.5rem;
   height: 0.3rem;
-  background: #000;
+  background: #fedc97;
   top: 1.6rem;
 }
 nav .date {
@@ -136,7 +159,7 @@ nav .date {
   padding-bottom: 4.4rem;
   border-radius: 25px;
   width: 100%;
-  background: #ddd;
+  background-color: #fedc97;
 }
 
 .main-title {
@@ -144,7 +167,7 @@ nav .date {
   text-align: center;
   font-weight: bold;
   padding: 2.1rem 0;
-  background: #ccc;
+  background-color: #ffb51d;
   border-radius: 25px;
   font-size: 2.4rem;
   margin-bottom: 3.3rem;
@@ -162,9 +185,12 @@ nav .date {
   align-items: stretch;
   flex-wrap: nowrap;
   cursor: pointer;
-  background: #ebebeb;
+  background-color: #ffeecb;
   margin-bottom: 3.4rem;
   border-radius: 1.2rem;
+}
+.books-index__item:hover {
+  background-color: #ffb51d;
 }
 .books-index__item__title {
   display: flex;
@@ -184,6 +210,7 @@ nav .date {
   line-height: 1.9rem;
 }
 .books-index__item__remove-btn {
+  background-color: #86eade;
   border: none;
   margin: 0;
   border-radius: 1.2rem;
@@ -207,12 +234,12 @@ nav .date {
   width: 4.4rem;
   height: 4.4rem;
   transform: translateY(150%);
-  background: #000;
+  background: #ffb51d;
 }
 .add-button__cross-icon {
   height: 0.4rem;
   width: 2.2rem;
-  background: #fff;
+  background: #000;
   position: relative;
 }
 .add-button__cross-icon::before {
@@ -221,7 +248,7 @@ nav .date {
   position: absolute;
   height: 0.4rem;
   width: 2.2rem;
-  background: #fff;
+  background: #000;
   transform: rotate(90deg);
 }
 
