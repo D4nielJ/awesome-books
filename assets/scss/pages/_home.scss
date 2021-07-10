@@ -22,10 +22,42 @@
   }
 }
 
+.overlay-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: $yellow;
+  z-index: 10;
+
+  &__nav-list {
+    padding-top: 16em;
+    padding-left: 4rem;
+
+    & li {
+      font-size: 5rem;
+      margin-bottom: 5rem;
+      font-weight: 500;
+      letter-spacing: 1rem;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2rem;
+    line-height: 3rem;
+  }
+}
+
 nav {
   margin: 0 auto;
   max-width: 72rem;
   padding: 1rem 2.7rem;
+  z-index: 20;
 
   @include d-flex(row, space-between);
 
