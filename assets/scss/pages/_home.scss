@@ -89,7 +89,7 @@ nav {
 }
 
 .generic-container {
-  @include d-flex(column, flex-start, flex-start);
+  @include d-flex(column, flex-start, center);
 
   padding-bottom: 4.4rem;
   border-radius: 25px;
@@ -115,46 +115,42 @@ nav {
   padding: 0 1.5rem;
 
   &__item {
-    @include d-flex(row, center, stretch);
+    @include d-flex(row, space-between, stretch);
 
     cursor: pointer;
     background: rgb(235, 235, 235);
     margin-bottom: 3.4rem;
     border-radius: 1.2rem;
-    position: relative;
+
+    &__title {
+      @include d-flex(column, center, center);
+
+      font-style: normal;
+      font-weight: 300;
+      font-size: 1.2rem;
+      padding: 0.7rem 0;
+      margin-left: 3rem;
+
+      & span {
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+      }
+    }
+
+    &__remove-btn {
+      border: none;
+      margin: 0;
+      border-radius: 1.2rem;
+
+      & .fa-trash-alt {
+        font-size: 2rem;
+        padding: 0 1.5rem;
+      }
+    }
 
     &:last-child {
       margin-bottom: 0;
-    }
-  }
-
-  &__remove-btn {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    border: none;
-    margin: 0;
-    border-radius: 1.2rem;
-
-    & .fa-trash-alt {
-      font-size: 2rem;
-      padding: 0 1.5rem;
-    }
-  }
-
-  &__title {
-    @include d-flex(column, center, center);
-
-    font-style: normal;
-    font-weight: 300;
-    font-size: 1.2rem;
-    padding: 0.7rem 0;
-
-    & span {
-      font-weight: 500;
-      font-size: 1.6rem;
-      line-height: 1.9rem;
     }
   }
 }
@@ -166,8 +162,8 @@ nav {
   border-radius: 50%;
   width: 4.4rem;
   height: 4.4rem;
-  position: absolute;
-  bottom: -2.2rem;
+  transform: translateY(150%);
+
   background: #000;
 
   &__cross-icon {

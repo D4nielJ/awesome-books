@@ -66,10 +66,10 @@ const addEventListenerToRemoveBtn = (button) => {
 const addOneBookToDom = (i) => {
   const li = document.createElement('li');
   const newBook = bookCollection.booksArray[bookCollection.booksArray.length - i];
-  li.innerHTML = `<p class="books-index__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;
+  li.innerHTML = `<p class="books-index__item__title"><span>${newBook.title}</span> by ${newBook.author}</p>`;
   const removeButton = document.createElement('button');
   removeButton.setAttribute('type', 'button');
-  removeButton.classList.add('books-index__remove-btn');
+  removeButton.classList.add('books-index__item__remove-btn');
   removeButton.innerHTML = '<i class="far fa-trash-alt"></i><span class="only-desktop">Remove</span>';
   addEventListenerToRemoveBtn(removeButton);
   li.appendChild(removeButton);

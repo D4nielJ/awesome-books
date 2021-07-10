@@ -131,7 +131,7 @@ nav .date {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: nowrap;
   padding-bottom: 4.4rem;
   border-radius: 25px;
@@ -158,32 +158,15 @@ nav .date {
 .books-index__item {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: stretch;
   flex-wrap: nowrap;
   cursor: pointer;
   background: #ebebeb;
   margin-bottom: 3.4rem;
   border-radius: 1.2rem;
-  position: relative;
 }
-.books-index__item:last-child {
-  margin-bottom: 0;
-}
-.books-index__remove-btn {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  border: none;
-  margin: 0;
-  border-radius: 1.2rem;
-}
-.books-index__remove-btn .fa-trash-alt {
-  font-size: 2rem;
-  padding: 0 1.5rem;
-}
-.books-index__title {
+.books-index__item__title {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -193,11 +176,24 @@ nav .date {
   font-weight: 300;
   font-size: 1.2rem;
   padding: 0.7rem 0;
+  margin-left: 3rem;
 }
-.books-index__title span {
+.books-index__item__title span {
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 1.9rem;
+}
+.books-index__item__remove-btn {
+  border: none;
+  margin: 0;
+  border-radius: 1.2rem;
+}
+.books-index__item__remove-btn .fa-trash-alt {
+  font-size: 2rem;
+  padding: 0 1.5rem;
+}
+.books-index__item:last-child {
+  margin-bottom: 0;
 }
 
 .add-button {
@@ -210,8 +206,7 @@ nav .date {
   border-radius: 50%;
   width: 4.4rem;
   height: 4.4rem;
-  position: absolute;
-  bottom: -2.2rem;
+  transform: translateY(150%);
   background: #000;
 }
 .add-button__cross-icon {
