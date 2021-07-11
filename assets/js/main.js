@@ -70,13 +70,16 @@ navLinks.forEach((li) => {
   li.addEventListener('mousedown', (e) => displayContainer(navLinks.indexOf(e.currentTarget)));
 });
 
-// Mobile Nav
-console.log(navLinksMobileNodeList);
+// Mobile Nav Links
+
 navLinksMobileNodeList.forEach((li) => {
-  li.addEventListener('mousedown', (e) => displayContainer(navLinksMobileNodeList.indexOf(e.currentTarget)));
+  li.addEventListener('mousedown', (e) => {
+    displayContainer(navLinksMobileNodeList.indexOf(e.currentTarget));
+    toggleMobileNav();
+  });
 });
 
-// Mobile Nav end
+// end
 
 setInterval(() => {
   /* eslint-disable */
