@@ -250,15 +250,17 @@ nav {
   padding: 0 1.5rem;
 
   &__item {
-    @include d-flex(row, space-between, stretch);
+    @include d-flex(row, center, stretch);
 
     cursor: pointer;
     background-color: $light-yellow;
     margin-bottom: 3.4rem;
     border-radius: 1.2rem;
+    overflow: hidden;
 
     &:hover {
       background-color: $yellow;
+      justify-content: space-between;
     }
 
     &__title {
@@ -268,7 +270,10 @@ nav {
       font-weight: 300;
       font-size: 1.2rem;
       padding: 0.7rem 0;
-      margin-left: 3rem;
+
+      &--mouseover {
+        margin-left: 3rem;
+      }
 
       & span {
         font-weight: 500;
@@ -282,6 +287,18 @@ nav {
       border: none;
       margin: 0;
       border-radius: 1.2rem;
+      transform: translateX(100%);
+      position: absolute;
+      right: 1000px;
+      transition: transform 1.5s;
+
+      &--mouseover {
+        position: static;
+        width: auto;
+        transform: translateX(0);
+        display: block;
+        transition: transform 0.5s;
+      }
 
       & .fa-trash-alt {
         font-size: 2rem;

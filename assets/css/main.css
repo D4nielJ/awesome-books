@@ -277,16 +277,18 @@ nav .date {
 .books-index__item {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: stretch;
   flex-wrap: nowrap;
   cursor: pointer;
   background-color: #ffeecb;
   margin-bottom: 3.4rem;
   border-radius: 1.2rem;
+  overflow: hidden;
 }
 .books-index__item:hover {
   background-color: #ffb51d;
+  justify-content: space-between;
 }
 .books-index__item__title {
   display: flex;
@@ -298,6 +300,8 @@ nav .date {
   font-weight: 300;
   font-size: 1.2rem;
   padding: 0.7rem 0;
+}
+.books-index__item__title--mouseover {
   margin-left: 3rem;
 }
 .books-index__item__title span {
@@ -310,6 +314,17 @@ nav .date {
   border: none;
   margin: 0;
   border-radius: 1.2rem;
+  transform: translateX(100%);
+  position: absolute;
+  right: 1000px;
+  transition: transform 1.5s;
+}
+.books-index__item__remove-btn--mouseover {
+  position: static;
+  width: auto;
+  transform: translateX(0);
+  display: block;
+  transition: transform 0.5s;
 }
 .books-index__item__remove-btn .fa-trash-alt {
   font-size: 2rem;

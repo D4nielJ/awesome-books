@@ -138,6 +138,17 @@ const addOneBookToDom = (i) => {
   li.classList.add('books-index__item');
   li.setAttribute('data-bookid', `${newBook.bookid}`);
   booksIndex.appendChild(li);
+  li.addEventListener('mouseenter', (e) => {
+    e.currentTarget.firstChild.classList.add('books-index__item__title--mouseover');
+    e.currentTarget.lastChild.classList.add('books-index__item__remove-btn--mouseover');
+    // e.currentTarget.lastChild.classList.remove('d-none');
+  });
+  li.addEventListener('mouseleave', (e) => {
+    e.currentTarget.firstChild.classList.remove('books-index__item__title--mouseover');
+    e.currentTarget.lastChild.classList.remove('books-index__item__remove-btn--mouseover');
+    // e.currentTarget.lastChild.classList.add('d-none');
+  });
+
 };
 
 // Local Storage
