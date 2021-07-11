@@ -5,6 +5,8 @@ import BooksCollection from './booksCollectionModule.js';
 const bookIndexContainer = document.querySelector('#books-index-container');
 const formAddContainer = document.querySelector('#form-add-container');
 const contactContainer = document.querySelector('#contact-container');
+const backgroundBCircle = document.querySelector('.background__bcircle');
+const backgroundYCircle = document.querySelector('.background__ycircle');
 const mobileNav = document.querySelector('.overlay-nav');
 const mobileNavStyle = getComputedStyle(mobileNav);
 const logo = document.querySelector('.logo-container');
@@ -55,14 +57,26 @@ const displayContainer = (index) => {
     formAddContainer.classList.add('d-none');
     contactContainer.classList.add('d-none');
     bookIndexContainer.classList.remove('d-none');
+    backgroundBCircle.classList.remove('background__bcircle--form');
+    backgroundYCircle.classList.remove('background__ycircle--form');
+    backgroundBCircle.classList.remove('background__bcircle--contact');
+    backgroundYCircle.classList.remove('background__ycircle--contact');
   } else if (index === 1) {
     formAddContainer.classList.remove('d-none');
     contactContainer.classList.add('d-none');
     bookIndexContainer.classList.add('d-none');
+    backgroundBCircle.classList.add('background__bcircle--form');
+    backgroundYCircle.classList.add('background__ycircle--form');
+    backgroundBCircle.classList.remove('background__bcircle--contact');
+    backgroundYCircle.classList.remove('background__ycircle--contact');
   } else {
     formAddContainer.classList.add('d-none');
     contactContainer.classList.remove('d-none');
     bookIndexContainer.classList.add('d-none');
+    backgroundBCircle.classList.remove('background__bcircle--form');
+    backgroundYCircle.classList.remove('background__ycircle--form');
+    backgroundBCircle.classList.add('background__bcircle--contact');
+    backgroundYCircle.classList.add('background__ycircle--contact');
   }
 };
 
