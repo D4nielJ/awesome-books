@@ -24,8 +24,8 @@ const toggleMobileNav = () => {
   mobileNav.classList.toggle('overlay-nav--show');
   logo.classList.toggle('logo-container--mobile-overlay');
   hamburgerIcon.forEach(line => line.classList.toggle('hamburguer-button__icon--mobile-overlay'));
+  navLinksMobile.classList.remove('overlay-nav__nav-list--overlay-transition');
   if (mobileNavStyle.width === '525px') {
-    navLinksMobile.classList.remove('overlay-nav__nav-list--overlay-transition');
     copyrightMobile.classList.add('d-none');
   }
 };

@@ -73,7 +73,7 @@ body {
   left: 0;
   background-color: #ffb51d;
   z-index: 10;
-  transition: width 1s;
+  transition: width 0.5s;
 }
 .overlay-nav--show {
   width: 100%;
@@ -81,23 +81,20 @@ body {
 .overlay-nav__nav-list {
   padding-top: 30%;
   padding-left: 4rem;
-  overflow: hidden;
-  width: 0;
-  transition: width ease-in-out;
+  transform: translateX(-100%);
+  position: absolute;
+  left: -1000px;
+  transition: transform 0.1s;
 }
 .overlay-nav__nav-list--overlay-transition {
-  width: auto;
+  transform: translateX(0%);
+  left: 0;
 }
 .overlay-nav__nav-list li {
   font-size: 5rem;
   margin-bottom: 5rem;
   font-weight: 500;
   letter-spacing: 1rem;
-  width: 0;
-  transition: width ease-in-out;
-}
-.overlay-nav__nav-list li--overlay-transition {
-  width: auto;
 }
 .overlay-nav__copyright {
   text-align: center;
