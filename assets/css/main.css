@@ -83,6 +83,7 @@ body {
   padding-left: 4rem;
   transform: translateX(-100%);
   position: absolute;
+  top: 0;
   left: -1000px;
   transition: transform 0.1s;
 }
@@ -91,7 +92,7 @@ body {
   left: 0;
 }
 .overlay-nav__nav-list li {
-  font-size: 5rem;
+  font-size: 4rem;
   margin-bottom: 5rem;
   font-weight: 500;
   letter-spacing: 1rem;
