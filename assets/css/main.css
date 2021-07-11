@@ -48,7 +48,7 @@ body {
 .background {
   position: absolute;
   top: 0;
-  bottom: 0;
+  min-height: 100vh;
   right: 0;
   left: 0;
   overflow: hidden;
@@ -68,21 +68,36 @@ body {
 .overlay-nav {
   position: absolute;
   top: 0;
-  bottom: 0;
-  width: 100%;
+  min-height: 100vh;
+  width: 0%;
   left: 0;
   background-color: #ffb51d;
   z-index: 10;
+  transition: width 1s;
+}
+.overlay-nav--show {
+  width: 100%;
 }
 .overlay-nav__nav-list {
-  padding-top: 16em;
+  padding-top: 30%;
   padding-left: 4rem;
+  overflow: hidden;
+  width: 0;
+  transition: width ease-in-out;
+}
+.overlay-nav__nav-list--overlay-transition {
+  width: auto;
 }
 .overlay-nav__nav-list li {
   font-size: 5rem;
   margin-bottom: 5rem;
   font-weight: 500;
   letter-spacing: 1rem;
+  width: 0;
+  transition: width ease-in-out;
+}
+.overlay-nav__nav-list li--overlay-transition {
+  width: auto;
 }
 .overlay-nav__copyright {
   text-align: center;
@@ -111,10 +126,12 @@ nav .logo-container {
   font-family: "Montserrat", sans-serif;
   letter-spacing: -0.165em;
   font-size: 3.5rem;
-  font-size: 3rem;
   color: #fff;
 }
-nav .hamburguer-icon {
+nav .logo-container--mobile-overlay {
+  color: #000;
+}
+nav .hamburguer-button {
   cursor: pointer;
   padding-top: 0.5rem;
   padding-right: 0.5rem;
@@ -122,25 +139,30 @@ nav .hamburguer-icon {
   background: none;
   position: relative;
 }
-nav .hamburguer-icon__tap {
+nav .hamburguer-button__tap {
   cursor: pointer;
-  background: transparent;
   display: block;
   position: absolute;
   top: 0;
-  right: 0;
-  width: 3.5rem;
-  height: 3rem;
+  right: -1.5rem;
+  width: 5rem;
+  height: 3.5rem;
 }
-nav .hamburguer-icon__line {
+nav .hamburguer-button__icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 2.5rem;
+  left: 0;
+  z-index: 1000;
+}
+nav .hamburguer-button__icon__line_1 {
   display: block;
   width: 2.5rem;
   height: 0.3rem;
   background: #fedc97;
-  position: relative;
 }
-nav .hamburguer-icon__line::before {
-  content: "";
+nav .hamburguer-button__icon__line_2 {
   display: block;
   position: absolute;
   width: 2rem;
@@ -149,14 +171,16 @@ nav .hamburguer-icon__line::before {
   background: #fedc97;
   top: 0.8rem;
 }
-nav .hamburguer-icon__line::after {
-  content: "";
+nav .hamburguer-button__icon__line_3 {
   display: block;
   position: absolute;
   width: 2.5rem;
   height: 0.3rem;
   background: #fedc97;
   top: 1.6rem;
+}
+nav .hamburguer-button__icon--mobile-overlay {
+  background-color: #000;
 }
 nav .date {
   position: absolute;

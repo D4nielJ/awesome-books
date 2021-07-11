@@ -4,7 +4,7 @@
 .background {
   position: absolute;
   top: 0;
-  bottom: 0;
+  min-height: 100vh;
   right: 0;
   left: 0;
   overflow: hidden;
@@ -25,21 +25,39 @@
 .overlay-nav {
   position: absolute;
   top: 0;
-  bottom: 0;
-  width: 100%;
+  min-height: 100vh;
+  width: 0%;
   left: 0;
   background-color: $yellow;
   z-index: 10;
+  transition: width 1s;
+
+  &--show {
+    width: 100%;
+  }
 
   &__nav-list {
-    padding-top: 16em;
+    padding-top: 30%;
     padding-left: 4rem;
+    overflow: hidden;
+    width: 0;
+    transition: width ease-in-out;
+
+    &--overlay-transition {
+      width: auto;
+    }
 
     & li {
       font-size: 5rem;
       margin-bottom: 5rem;
       font-weight: 500;
       letter-spacing: 1rem;
+      width: 0;
+      transition: width ease-in-out;
+
+      &--overlay-transition {
+        width: auto;
+      }
     }
   }
 
@@ -69,11 +87,14 @@ nav {
     font-family: "Montserrat", sans-serif;
     letter-spacing: -0.165em;
     font-size: 3.5rem;
-    font-size: 3rem;
     color: #fff;
+
+    &--mobile-overlay {
+      color: #000;
+    }
   }
 
-  & .hamburguer-icon {
+  & .hamburguer-button {
     cursor: pointer;
     padding-top: 0.5rem;
     padding-right: 0.5rem;
@@ -83,24 +104,30 @@ nav {
 
     &__tap {
       cursor: pointer;
-      background: transparent;
       display: block;
       position: absolute;
       top: 0;
-      right: 0;
-      width: 3.5rem;
-      height: 3rem;
+      right: -1.5rem;
+      width: 5rem;
+      height: 3.5rem;
     }
 
-    &__line {
+    &__icon {
       display: block;
+      position: absolute;
+      top: 0;
       width: 2.5rem;
-      height: 0.3rem;
-      background: $pale-yellow;
-      position: relative;
+      left: 0;
+      z-index: 1000;
 
-      &::before {
-        content: "";
+      &__line_1 {
+        display: block;
+        width: 2.5rem;
+        height: 0.3rem;
+        background: $pale-yellow;
+      }
+
+      &__line_2 {
         display: block;
         position: absolute;
         width: 2rem;
@@ -110,14 +137,17 @@ nav {
         top: 0.8rem;
       }
 
-      &::after {
-        content: "";
+      &__line_3 {
         display: block;
         position: absolute;
         width: 2.5rem;
         height: 0.3rem;
         background: $pale-yellow;
         top: 1.6rem;
+      }
+
+      &--mobile-overlay {
+        background-color: #000;
       }
     }
   }

@@ -5,11 +5,41 @@ import BooksCollection from './booksCollectionModule.js';
 const bookIndexContainer = document.querySelector('#books-index-container');
 const formAddContainer = document.querySelector('#form-add-container');
 const contactContainer = document.querySelector('#contact-container');
+const mobileNav = document.querySelector('.overlay-nav');
+const mobileNavStyle = getComputedStyle(mobileNav);
+const logo = document.querySelector('.logo-container');
+const hamburgerTap = document.querySelector('.hamburguer-button__tap');
+const hamburgerIcon = document.querySelectorAll('.hamburguer-button__icon span');
+const navLinksMobile = document.querySelector('.overlay-nav__nav-list');
+const copyrightMobile = document.querySelector('.overlay-nav__copyright');
 const formAddBook = document.querySelector('form');
 const booksIndex = document.querySelector('.books-index');
 const bookCollection = new BooksCollection();
 const navLinks = Array.from(document.querySelectorAll('.nav-list li'));
 const dateDiv = document.querySelector('.date');
+
+// Mobile Nav
+
+const toggleMobileNav = () => {
+  mobileNav.classList.toggle('overlay-nav--show');
+  logo.classList.toggle('logo-container--mobile-overlay');
+  hamburgerIcon.forEach(line => line.classList.toggle('hamburguer-button__icon--mobile-overlay'));
+  if (mobileNavStyle.width === '525px') {
+    navLinksMobile.classList.remove('overlay-nav__nav-list--overlay-transition');
+    copyrightMobile.classList.add('d-none');
+  }
+};
+
+hamburgerTap.addEventListener('mousedown', toggleMobileNav);
+
+const onMobileNavTransition = () => {
+  if (mobileNavStyle.width === '525px') {
+    navLinksMobile.classList.add('overlay-nav__nav-list--overlay-transition');
+    copyrightMobile.classList.remove('d-none');
+  }
+};
+
+mobileNav.addEventListener("transitionend", onMobileNavTransition);
 
 // Desktop Nav
 
