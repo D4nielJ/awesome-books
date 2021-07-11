@@ -10,7 +10,11 @@ const mobileNavStyle = getComputedStyle(mobileNav);
 const logo = document.querySelector('.logo-container');
 const hamburgerTap = document.querySelector('.hamburguer-button__tap');
 const hamburgerIcon = document.querySelectorAll('.hamburguer-button__icon span');
+const hamburgerIconLine1 = document.querySelector('.hamburguer-button__icon__line_1');
+const hamburgerIconLine2 = document.querySelector('.hamburguer-button__icon__line_2');
+const hamburgerIconLine3 = document.querySelector('.hamburguer-button__icon__line_3');
 const navLinksMobile = document.querySelector('.overlay-nav__nav-list');
+const navLinksMobileNodeList = Array.from(document.querySelectorAll('.overlay-nav__nav-list li'));
 const copyrightMobile = document.querySelector('.overlay-nav__copyright');
 const formAddBook = document.querySelector('form');
 const booksIndex = document.querySelector('.books-index');
@@ -24,6 +28,9 @@ const toggleMobileNav = () => {
   mobileNav.classList.toggle('overlay-nav--show');
   logo.classList.toggle('logo-container--mobile-overlay');
   hamburgerIcon.forEach(line => line.classList.toggle('hamburguer-button__icon--mobile-overlay'));
+  hamburgerIconLine1.classList.toggle('hamburguer-button__icon__line_1--close-btn');
+  hamburgerIconLine2.classList.toggle('d-none');
+  hamburgerIconLine3.classList.toggle('hamburguer-button__icon__line_3--close-btn');
   if (mobileNavStyle.width  === visualViewport.width + 'px') {
     navLinksMobile.classList.remove('overlay-nav__nav-list--overlay-transition');
     copyrightMobile.classList.add('d-none');
@@ -62,6 +69,14 @@ const displayContainer = (index) => {
 navLinks.forEach((li) => {
   li.addEventListener('mousedown', (e) => displayContainer(navLinks.indexOf(e.currentTarget)));
 });
+
+// Mobile Nav
+console.log(navLinksMobileNodeList);
+navLinksMobileNodeList.forEach((li) => {
+  li.addEventListener('mousedown', (e) => displayContainer(navLinksMobileNodeList.indexOf(e.currentTarget)));
+});
+
+// Mobile Nav end
 
 setInterval(() => {
   /* eslint-disable */

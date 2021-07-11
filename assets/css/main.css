@@ -159,6 +159,12 @@ nav .hamburguer-button__icon__line_1 {
   width: 2.5rem;
   height: 0.3rem;
   background: #fedc97;
+  transition: transform 0.35s ease-in;
+}
+nav .hamburguer-button__icon__line_1--close-btn {
+  transition: transform 0.65s ease-in;
+  background-color: #000;
+  transform: rotate(45deg) translate(0.8rem, 0.8rem);
 }
 nav .hamburguer-button__icon__line_2 {
   display: block;
@@ -176,6 +182,11 @@ nav .hamburguer-button__icon__line_3 {
   height: 0.3rem;
   background: #fedc97;
   top: 1.6rem;
+  transition: transform 0.35s ease-in;
+}
+nav .hamburguer-button__icon__line_3--close-btn {
+  transition: transform 0.65s ease-in;
+  transform: rotate(-45deg) translate(0.3rem, -0.4rem);
 }
 nav .hamburguer-button__icon--mobile-overlay {
   background-color: #000;
@@ -198,7 +209,7 @@ nav .date {
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 8rem 2.7rem 0 2rem;
+  padding: 8rem 2.7rem 0 2.7rem;
 }
 
 .generic-container {
