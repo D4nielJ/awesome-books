@@ -382,10 +382,11 @@ nav {
       border-radius: 12px;
       border: none;
       margin: 1.5rem 0;
+      font-size: 2.4rem;
       text-align: center;
 
       &::placeholder {
-        font-size: 1.4rem;
+        font-size: 2.4rem;
         color: $blue;
       }
     }
