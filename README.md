@@ -13,6 +13,8 @@ It allows the users to create and manage a list of books and save them in their 
 
 * [Live Demo](https://d4nielj.github.io/awesome-books/)
 
+![screenshot](./other/app_screenshot.png)
+
 ## Authors
 
 👤 **Arturo Alvarez**

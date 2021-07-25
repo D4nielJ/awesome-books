@@ -453,6 +453,12 @@ nav .date {
   font-size: 1.8rem;
 }
 
+#visualViewport {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
 @media (min-width: 768px) {
   header {
     width: 100%;

@@ -24,6 +24,7 @@ const booksIndex = document.querySelector('.books-index');
 const bookCollection = new BooksCollection();
 const navLinks = Array.from(document.querySelectorAll('.nav-list li'));
 const dateDiv = document.querySelector('.date');
+const visualViewportPixel = document.querySelector('#visualViewport');
 
 // Mobile Nav
 
@@ -34,7 +35,7 @@ const toggleMobileNav = () => {
   hamburgerIconLine1.classList.toggle('hamburguer-button__icon__line_1--close-btn');
   hamburgerIconLine2.classList.toggle('d-none');
   hamburgerIconLine3.classList.toggle('hamburguer-button__icon__line_3--close-btn');
-  if (mobileNavStyle.width === `${visualViewport.width}px`) {
+  if (mobileNavStyle.width === `${visualViewportPixel.getBoundingClientRect().left}px`) {
     navLinksMobile.classList.remove('overlay-nav__nav-list--overlay-transition');
     copyrightMobile.classList.add('d-none');
   }
@@ -43,7 +44,7 @@ const toggleMobileNav = () => {
 hamburgerTap.addEventListener('mousedown', toggleMobileNav);
 
 const onMobileNavTransition = () => {
-  if (mobileNavStyle.width === (`${visualViewport.width}px`)) {
+  if (mobileNavStyle.width === (`${visualViewportPixel.getBoundingClientRect().left}px`)) {
     navLinksMobile.classList.add('overlay-nav__nav-list--overlay-transition');
     copyrightMobile.classList.remove('d-none');
   }

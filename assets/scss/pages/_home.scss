@@ -437,6 +437,12 @@ nav {
   }
 }
 
+#visualViewport {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
 // Media Queries
 
 @include mq.media(">=tablet") {
