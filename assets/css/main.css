@@ -155,12 +155,16 @@ nav .logo-container {
   letter-spacing: -0.165em;
   font-size: 3.5rem;
   color: #fff;
+  cursor: unset;
+}
+nav .logo-container a:hover {
+  cursor: default;
 }
 nav .logo-container--mobile-overlay {
   color: #000;
 }
 nav .hamburguer-button {
-  cursor: pointer;
+  cursor: unset;
   padding-top: 0.5rem;
   padding-right: 0.5rem;
   border: none;
@@ -168,7 +172,7 @@ nav .hamburguer-button {
   position: relative;
 }
 nav .hamburguer-button__tap {
-  cursor: pointer;
+  cursor: unset;
   display: block;
   position: absolute;
   top: 0;
@@ -280,15 +284,17 @@ nav .date {
   justify-content: center;
   align-items: stretch;
   flex-wrap: nowrap;
-  cursor: pointer;
   background-color: #ffeecb;
+  position: relative;
   margin-bottom: 3.4rem;
   border-radius: 1.2rem;
   overflow: hidden;
+  transition: background-color 0.2s ease-in;
 }
-.books-index__item:hover {
+.books-index__item--mouseover {
   background-color: #ffb51d;
   justify-content: space-between;
+  transition: transform 0.5s ease-in-out;
 }
 .books-index__item__title {
   display: flex;
@@ -311,19 +317,18 @@ nav .date {
 }
 .books-index__item__remove-btn {
   background-color: #86eade;
+  width: 60px;
   border: none;
   margin: 0;
   border-radius: 1.2rem;
-  transform: translateX(100%);
   position: absolute;
-  right: 1000px;
+  right: -60px;
+  bottom: 0;
+  top: 0;
   transition: transform 1.5s;
 }
 .books-index__item__remove-btn--mouseover {
-  position: static;
-  width: auto;
-  transform: translateX(0);
-  display: block;
+  transform: translateX(-60px);
   transition: transform 0.5s;
 }
 .books-index__item__remove-btn .fa-trash-alt {

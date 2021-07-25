@@ -30,11 +30,11 @@ const dateDiv = document.querySelector('.date');
 const toggleMobileNav = () => {
   mobileNav.classList.toggle('overlay-nav--show');
   logo.classList.toggle('logo-container--mobile-overlay');
-  hamburgerIcon.forEach(line => line.classList.toggle('hamburguer-button__icon--mobile-overlay'));
+  hamburgerIcon.forEach((line) => line.classList.toggle('hamburguer-button__icon--mobile-overlay'));
   hamburgerIconLine1.classList.toggle('hamburguer-button__icon__line_1--close-btn');
   hamburgerIconLine2.classList.toggle('d-none');
   hamburgerIconLine3.classList.toggle('hamburguer-button__icon__line_3--close-btn');
-  if (mobileNavStyle.width  === visualViewport.width + 'px') {
+  if (mobileNavStyle.width === `${visualViewport.width}px`) {
     navLinksMobile.classList.remove('overlay-nav__nav-list--overlay-transition');
     copyrightMobile.classList.add('d-none');
   }
@@ -43,13 +43,13 @@ const toggleMobileNav = () => {
 hamburgerTap.addEventListener('mousedown', toggleMobileNav);
 
 const onMobileNavTransition = () => {
-  if (mobileNavStyle.width === (visualViewport.width + 'px')) {
+  if (mobileNavStyle.width === (`${visualViewport.width}px`)) {
     navLinksMobile.classList.add('overlay-nav__nav-list--overlay-transition');
     copyrightMobile.classList.remove('d-none');
   }
 };
 
-mobileNav.addEventListener("transitionend", onMobileNavTransition);
+mobileNav.addEventListener('transitionend', onMobileNavTransition);
 
 // Desktop Nav
 
@@ -139,17 +139,20 @@ const addOneBookToDom = (i) => {
   li.classList.add('books-index__item');
   li.setAttribute('data-bookid', `${newBook.bookid}`);
   booksIndex.appendChild(li);
-  li.addEventListener('mouseenter', (e) => {
+  li.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    e.currentTarget.classList.add('books-index__item--mouseover');
     e.currentTarget.firstChild.classList.add('books-index__item__title--mouseover');
     e.currentTarget.lastChild.classList.add('books-index__item__remove-btn--mouseover');
-    // e.currentTarget.lastChild.classList.remove('d-none');
   });
-  li.addEventListener('mouseleave', (e) => {
-    e.currentTarget.firstChild.classList.remove('books-index__item__title--mouseover');
-    e.currentTarget.lastChild.classList.remove('books-index__item__remove-btn--mouseover');
-    // e.currentTarget.lastChild.classList.add('d-none');
+  document.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    if (e.currentTarget !== li && li.className === 'books-index__item books-index__item--mouseover') {
+      li.classList.remove('books-index__item--mouseover');
+      li.firstChild.classList.remove('books-index__item__title--mouseover');
+      li.lastChild.classList.remove('books-index__item__remove-btn--mouseover');
+    }
   });
-
 };
 
 addButtonMobile.addEventListener('mousedown', () => displayContainer(1));

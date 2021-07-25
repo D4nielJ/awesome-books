@@ -79,8 +79,7 @@
     position: absolute;
     top: 0;
     left: -1000px;
-    transition: transform 0.10s;
-
+    transition: transform 0.1s;
 
     &--overlay-transition {
       transform: translateX(0%);
@@ -122,6 +121,11 @@ nav {
     letter-spacing: -0.165em;
     font-size: 3.5rem;
     color: #fff;
+    cursor: unset;
+
+    & a:hover {
+      cursor: default;
+    }
 
     &--mobile-overlay {
       color: #000;
@@ -129,7 +133,7 @@ nav {
   }
 
   & .hamburguer-button {
-    cursor: pointer;
+    cursor: unset;
     padding-top: 0.5rem;
     padding-right: 0.5rem;
     border: none;
@@ -137,7 +141,7 @@ nav {
     position: relative;
 
     &__tap {
-      cursor: pointer;
+      cursor: unset;
       display: block;
       position: absolute;
       top: 0;
@@ -189,7 +193,7 @@ nav {
 
         &--close-btn {
           transition: transform 0.65s ease-in;
-          transform: rotate(-45deg) translate(0.30rem, -0.40rem)
+          transform: rotate(-45deg) translate(0.3rem, -0.4rem);
         }
       }
 
@@ -252,15 +256,17 @@ nav {
   &__item {
     @include d-flex(row, center, stretch);
 
-    cursor: pointer;
     background-color: $light-yellow;
+    position: relative;
     margin-bottom: 3.4rem;
     border-radius: 1.2rem;
     overflow: hidden;
+    transition: background-color 0.2s ease-in;
 
-    &:hover {
+    &--mouseover {
       background-color: $yellow;
       justify-content: space-between;
+      transition: transform 0.5s ease-in-out;
     }
 
     &__title {
@@ -284,19 +290,18 @@ nav {
 
     &__remove-btn {
       background-color: $blue;
+      width: 60px;
       border: none;
       margin: 0;
       border-radius: 1.2rem;
-      transform: translateX(100%);
       position: absolute;
-      right: 1000px;
+      right: -60px;
+      bottom: 0;
+      top: 0;
       transition: transform 1.5s;
 
       &--mouseover {
-        position: static;
-        width: auto;
-        transform: translateX(0);
-        display: block;
+        transform: translateX(-60px);
         transition: transform 0.5s;
       }
 
@@ -320,7 +325,6 @@ nav {
   width: 4.4rem;
   height: 4.4rem;
   transform: translateY(150%);
-
   background: $yellow;
 
   &__cross-icon {
