@@ -58,6 +58,8 @@ const displayContainer = (index) => {
     formAddContainer.classList.add('d-none');
     contactContainer.classList.add('d-none');
     bookIndexContainer.classList.remove('d-none');
+    logo.classList.remove('logo-container--black');
+    hamburgerIcon.forEach((line) => line.classList.remove('hamburguer-button__icon--black'));
     backgroundBCircle.classList.remove('background__bcircle--form');
     backgroundYCircle.classList.remove('background__ycircle--form');
     backgroundBCircle.classList.remove('background__bcircle--contact');
@@ -66,6 +68,8 @@ const displayContainer = (index) => {
     formAddContainer.classList.remove('d-none');
     contactContainer.classList.add('d-none');
     bookIndexContainer.classList.add('d-none');
+    logo.classList.remove('logo-container--black');
+    hamburgerIcon.forEach((line) => line.classList.remove('hamburguer-button__icon--black'));
     backgroundBCircle.classList.add('background__bcircle--form');
     backgroundYCircle.classList.add('background__ycircle--form');
     backgroundBCircle.classList.remove('background__bcircle--contact');
@@ -74,6 +78,8 @@ const displayContainer = (index) => {
     formAddContainer.classList.add('d-none');
     contactContainer.classList.remove('d-none');
     bookIndexContainer.classList.add('d-none');
+    logo.classList.add('logo-container--black');
+    hamburgerIcon.forEach((line) => line.classList.add('hamburguer-button__icon--black'));
     backgroundBCircle.classList.remove('background__bcircle--form');
     backgroundYCircle.classList.remove('background__ycircle--form');
     backgroundBCircle.classList.add('background__bcircle--contact');

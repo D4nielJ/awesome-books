@@ -160,7 +160,7 @@ nav .logo-container {
 nav .logo-container a:hover {
   cursor: default;
 }
-nav .logo-container--mobile-overlay {
+nav .logo-container--black, nav .logo-container--mobile-overlay {
   color: #000;
 }
 nav .hamburguer-button {
@@ -187,6 +187,9 @@ nav .hamburguer-button__icon {
   width: 2.5rem;
   left: 0;
   z-index: 1000;
+}
+nav .hamburguer-button__icon--black {
+  background-color: #000 !important;
 }
 nav .hamburguer-button__icon__line_1 {
   display: block;

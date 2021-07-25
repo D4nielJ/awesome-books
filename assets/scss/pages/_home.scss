@@ -127,6 +127,7 @@ nav {
       cursor: default;
     }
 
+    &--black,
     &--mobile-overlay {
       color: #000;
     }
@@ -157,6 +158,10 @@ nav {
       width: 2.5rem;
       left: 0;
       z-index: 1000;
+
+      &--black {
+        background-color: #000 !important;
+      }
 
       &__line_1 {
         display: block;
