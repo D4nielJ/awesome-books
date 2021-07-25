@@ -17,6 +17,7 @@ const hamburgerIconLine2 = document.querySelector('.hamburguer-button__icon__lin
 const hamburgerIconLine3 = document.querySelector('.hamburguer-button__icon__line_3');
 const navLinksMobile = document.querySelector('.overlay-nav__nav-list');
 const navLinksMobileNodeList = Array.from(document.querySelectorAll('.overlay-nav__nav-list li'));
+const addButtonMobile = document.querySelector('.add-button');
 const copyrightMobile = document.querySelector('.overlay-nav__copyright');
 const formAddBook = document.querySelector('form');
 const booksIndex = document.querySelector('.books-index');
@@ -150,6 +151,8 @@ const addOneBookToDom = (i) => {
   });
 
 };
+
+addButtonMobile.addEventListener('mousedown', () => displayContainer(1));
 
 // Local Storage
 
