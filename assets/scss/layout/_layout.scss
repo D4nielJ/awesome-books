@@ -22,6 +22,7 @@ a:hover {
 body {
   font-family: $font;
   font-size: 1.6rem;
+  background-color: #000;
 
   @include mq.media('>=tablet') {
     position: relative;
@@ -31,11 +32,6 @@ body {
 
 .d-none {
   display: none !important;
-  // position: absolute;
-  // height: 0;
-  // margin: 0;
-  // padding: 0;
-  // left: -5000px;
 }
 
 .only-mobile {

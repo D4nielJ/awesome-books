@@ -20,6 +20,7 @@ a:hover {
 body {
   font-family: "roboto", sans-serif;
   font-size: 1.6rem;
+  background-color: #000;
 }
 @media (min-width: 768px) {
   body {
@@ -44,10 +45,102 @@ body {
   }
 }
 
+.background {
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+.background__bcircle {
+  display: block;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 75%;
+  background: #86eade;
+  bottom: -55%;
+  border-radius: 50%;
+}
+.background__bcircle--form {
+  padding: 100%;
+  right: 80%;
+  z-index: 2;
+}
+.background__bcircle--contact {
+  padding: 100%;
+  right: 20%;
+  bottom: unset;
+  top: -54%;
+}
+.background__ycircle--form {
+  display: block;
+  position: absolute;
+  right: -50%;
+  padding: 50%;
+  background: #ffb51d;
+  bottom: -35%;
+  border-radius: 50%;
+  z-index: 2;
+}
+.background__ycircle--contact {
+  display: block;
+  position: absolute;
+  right: -30%;
+  background: #ffb51d;
+  bottom: -20%;
+  border-radius: 50%;
+  padding: 40%;
+}
+
+.overlay-nav {
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  width: 0%;
+  left: 0;
+  background-color: #ffb51d;
+  z-index: 10;
+  transition: width 0.5s;
+}
+.overlay-nav--show {
+  width: 100%;
+}
+.overlay-nav__nav-list {
+  padding-top: 30%;
+  padding-left: 4rem;
+  transform: translateX(-100%);
+  position: absolute;
+  top: 0;
+  left: -1000px;
+  transition: transform 0.1s;
+}
+.overlay-nav__nav-list--overlay-transition {
+  transform: translateX(0%);
+  left: 0;
+}
+.overlay-nav__nav-list li {
+  font-size: 4rem;
+  margin-bottom: 5rem;
+  font-weight: 500;
+  letter-spacing: 1rem;
+}
+.overlay-nav__copyright {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 2rem;
+  line-height: 3rem;
+}
+
 nav {
   margin: 0 auto;
   max-width: 72rem;
   padding: 1rem 2.7rem;
+  z-index: 20;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -61,50 +154,79 @@ nav .logo-container {
   font-family: "Montserrat", sans-serif;
   letter-spacing: -0.165em;
   font-size: 3.5rem;
-  font-size: 3rem;
+  color: #fff;
+  cursor: unset;
 }
-nav .hamburguer-icon {
-  cursor: pointer;
+nav .logo-container a:hover {
+  cursor: default;
+}
+nav .logo-container--black, nav .logo-container--mobile-overlay {
+  color: #000;
+}
+nav .hamburguer-button {
+  cursor: unset;
   padding-top: 0.5rem;
   padding-right: 0.5rem;
   border: none;
   background: none;
   position: relative;
 }
-nav .hamburguer-icon__tap {
-  cursor: pointer;
-  background: transparent;
+nav .hamburguer-button__tap {
+  cursor: unset;
   display: block;
   position: absolute;
   top: 0;
-  right: 0;
-  width: 3.5rem;
-  height: 3rem;
+  right: -1.5rem;
+  width: 5rem;
+  height: 3.5rem;
 }
-nav .hamburguer-icon__line {
-  display: block;
-  width: 2.5rem;
-  height: 0.3rem;
-  background: #000;
-  position: relative;
-}
-nav .hamburguer-icon__line::before {
-  content: "";
+nav .hamburguer-button__icon {
   display: block;
   position: absolute;
+  top: 0;
+  width: 2.5rem;
+  left: 0;
+  z-index: 1000;
+}
+nav .hamburguer-button__icon--black {
+  background-color: #000 !important;
+}
+nav .hamburguer-button__icon__line_1 {
+  display: block;
   width: 2.5rem;
   height: 0.3rem;
-  background: #000;
+  background: #fedc97;
+  transition: transform 0.35s ease-in;
+}
+nav .hamburguer-button__icon__line_1--close-btn {
+  transition: transform 0.65s ease-in;
+  background-color: #000;
+  transform: rotate(45deg) translate(0.8rem, 0.8rem);
+}
+nav .hamburguer-button__icon__line_2 {
+  display: block;
+  position: absolute;
+  width: 2rem;
+  right: 0;
+  height: 0.3rem;
+  background: #fedc97;
   top: 0.8rem;
 }
-nav .hamburguer-icon__line::after {
-  content: "";
+nav .hamburguer-button__icon__line_3 {
   display: block;
   position: absolute;
   width: 2.5rem;
   height: 0.3rem;
-  background: #000;
+  background: #fedc97;
   top: 1.6rem;
+  transition: transform 0.35s ease-in;
+}
+nav .hamburguer-button__icon__line_3--close-btn {
+  transition: transform 0.65s ease-in;
+  transform: rotate(-45deg) translate(0.3rem, -0.4rem);
+}
+nav .hamburguer-button__icon--mobile-overlay {
+  background-color: #000;
 }
 nav .date {
   position: absolute;
@@ -124,19 +246,23 @@ nav .date {
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 8rem 2.7rem 0 2rem;
+  padding: 8rem 2.7rem 0 2.7rem;
+}
+
+.books-index-container {
+  z-index: 5;
 }
 
 .generic-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: nowrap;
   padding-bottom: 4.4rem;
   border-radius: 25px;
   width: 100%;
-  background: #ddd;
+  background-color: #fedc97;
 }
 
 .main-title {
@@ -144,7 +270,7 @@ nav .date {
   text-align: center;
   font-weight: bold;
   padding: 2.1rem 0;
-  background: #ccc;
+  background-color: #ffb51d;
   border-radius: 25px;
   font-size: 2.4rem;
   margin-bottom: 3.3rem;
@@ -161,29 +287,19 @@ nav .date {
   justify-content: center;
   align-items: stretch;
   flex-wrap: nowrap;
-  cursor: pointer;
-  background: #ebebeb;
+  background-color: #ffeecb;
+  position: relative;
   margin-bottom: 3.4rem;
   border-radius: 1.2rem;
-  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s ease-in;
 }
-.books-index__item:last-child {
-  margin-bottom: 0;
+.books-index__item--mouseover {
+  background-color: #ffb51d;
+  justify-content: space-between;
+  transition: transform 0.5s ease-in-out;
 }
-.books-index__remove-btn {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  border: none;
-  margin: 0;
-  border-radius: 1.2rem;
-}
-.books-index__remove-btn .fa-trash-alt {
-  font-size: 2rem;
-  padding: 0 1.5rem;
-}
-.books-index__title {
+.books-index__item__title {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,10 +310,36 @@ nav .date {
   font-size: 1.2rem;
   padding: 0.7rem 0;
 }
-.books-index__title span {
+.books-index__item__title--mouseover {
+  margin-left: 3rem;
+}
+.books-index__item__title span {
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 1.9rem;
+}
+.books-index__item__remove-btn {
+  background-color: #86eade;
+  width: 60px;
+  border: none;
+  margin: 0;
+  border-radius: 1.2rem;
+  position: absolute;
+  right: -60px;
+  bottom: 0;
+  top: 0;
+  transition: transform 1.5s;
+}
+.books-index__item__remove-btn--mouseover {
+  transform: translateX(-60px);
+  transition: transform 0.5s;
+}
+.books-index__item__remove-btn .fa-trash-alt {
+  font-size: 2rem;
+  padding: 0 1.5rem;
+}
+.books-index__item:last-child {
+  margin-bottom: 0;
 }
 
 .add-button {
@@ -210,14 +352,13 @@ nav .date {
   border-radius: 50%;
   width: 4.4rem;
   height: 4.4rem;
-  position: absolute;
-  bottom: -2.2rem;
-  background: #000;
+  transform: translateY(150%);
+  background: #ffb51d;
 }
 .add-button__cross-icon {
   height: 0.4rem;
   width: 2.2rem;
-  background: #fff;
+  background: #000;
   position: relative;
 }
 .add-button__cross-icon::before {
@@ -226,7 +367,7 @@ nav .date {
   position: absolute;
   height: 0.4rem;
   width: 2.2rem;
-  background: #fff;
+  background: #000;
   transform: rotate(90deg);
 }
 
@@ -239,20 +380,21 @@ nav .date {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: nowrap;
   border-radius: 25px;
   width: 100%;
-  background: #ddd;
+  background: #fedc97;
   position: relative;
   padding-bottom: 4.4rem;
+  z-index: 5;
 }
 .form-add__title {
   width: 100%;
   text-align: center;
   font-weight: bold;
   padding: 2.1rem 0;
-  background: #ccc;
+  background: #ffb51d;
   border-radius: 25px;
   font-size: 2.4rem;
   margin-bottom: 2rem;
@@ -266,10 +408,16 @@ nav .date {
   border-radius: 12px;
   border: none;
   margin: 1.5rem 0;
+  font-size: 2.4rem;
   text-align: center;
 }
 .form-add__inputs-wrapper__input::placeholder {
-  font-size: 1.4rem;
+  font-size: 2.4rem;
+  color: #86eade;
+}
+
+.contact-container {
+  z-index: 5;
 }
 
 .contact-card {
@@ -303,6 +451,12 @@ nav .date {
   display: inline-block;
   padding-right: 0.4rem;
   font-size: 1.8rem;
+}
+
+#visualViewport {
+  position: fixed;
+  right: 0;
+  bottom: 0;
 }
 
 @media (min-width: 768px) {
