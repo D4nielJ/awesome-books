@@ -1,128 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/2bdc450678.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
-    <title>Awesome Books</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo-container only-mobile">AB</div>
-        <div class="logo-container only-desktop">AWESOME BOOKS</div>
-        <!-- <div class="logo-container">AWESOME BOOKS</div> -->
-        <button type="button" class="hamburguer-icon only-mobile">
-          <span class="hamburguer-icon__tap"></span>
-          <span class="hamburguer-icon__line"></span>
-        </button>
-        <ul class="nav-list only-desktop">
-          <li><a href="#">List</a></li>
-          <li><a href="#">Add new</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="date only-desktop"></div>
-      </nav>
-    </header>
-    <main class="main-container">
-      <div
-        class="books-index-container generic-container"
-        id="books-index-container"
-      >
-        <h1 class="main-title">All awesome Books</h1>
-        <ul class="books-index">
-          <!-- JS generated elements will be appended here -->
-        </ul>
-        <button type="button" class="add-button only-mobile">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/2bdc450678.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
+  <title>Awesome Books</title>
+</head>
+
+<body>
+  <div class="background">
+    <div class="background__bcircle"></div>
+    <div class="background__ycircle"></div>
+  </div>
+  <div class="overlay-nav only-mobile">
+    <ul class="overlay-nav__nav-list">
+      <li><a href="#">List</a></li>
+      <li><a href="#">Add new</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p class="overlay-nav__copyright d-none">© Copyright<br>D4nielJ and StarSheriff2</p>
+  </div>
+  <header>
+    <nav>
+      <div class="logo-container only-mobile"><a href="/awesome-books/">AB</a></div>
+      <div class="logo-container only-desktop">AWESOME BOOKS</div>
+      <button type="button" class="hamburguer-button only-mobile">
+        <span class="hamburguer-button__tap"></span>
+        <span class="hamburguer-button__icon">
+          <span class="hamburguer-button__icon__line_1"></span>
+          <span class="hamburguer-button__icon__line_2"></span>
+          <span class="hamburguer-button__icon__line_3"></span>
+        </span>
+      </button>
+      <ul class="nav-list only-desktop">
+        <li><a href="#">List</a></li>
+        <li><a href="#">Add new</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="date only-desktop"></div>
+    </nav>
+  </header>
+  <main class="main-container">
+    <div class="books-index-container generic-container" id="books-index-container">
+      <h1 class="main-title">All awesome Books</h1>
+      <ul class="books-index">
+        <!-- JS generated elements will be appended here -->
+      </ul>
+      <button type="button" class="add-button only-mobile">
+        <span class="add-button__cross-icon"></span>
+      </button>
+    </div>
+    <div class="form-add-container d-none" id="form-add-container">
+      <form class="form-add">
+        <h2 class="form-add__title">Add a new book</h2>
+        <div class="form-add__inputs-wrapper">
+          <label class="d-none" for="title">Title</label>
+          <input type="text" id="title" name="title" placeholder="Insert the title"
+            class="form-add__inputs-wrapper__input" required />
+          <label class="d-none" for="author">Author</label>
+          <input type="text" id="author" name="author" placeholder="Insert the author"
+            class="form-add__inputs-wrapper__input" required />
+          <button class="form-add__button add-button-desktop only-desktop" type="submit">
+            <span class="add-button-desktop__cross-icon"></span>
+            <span>Add</span>
+          </button>
+        </div>
+        <button class="form-add__button add-button only-mobile" type="submit">
           <span class="add-button__cross-icon"></span>
         </button>
-      </div>
-      <div class="form-add-container d-none" id="form-add-container">
-        <form class="form-add">
-          <h2 class="form-add__title">Add a new book</h2>
-          <div class="form-add__inputs-wrapper">
-            <label class="d-none" for="title">Title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              placeholder="Insert the title"
-              class="form-add__inputs-wrapper__input"
-              required
-            />
-            <label class="d-none" for="author">Author</label>
-            <input
-              type="text"
-              id="author"
-              name="author"
-              placeholder="Insert the author"
-              class="form-add__inputs-wrapper__input"
-              required
-            />
-            <button
-              class="form-add__button add-button-desktop only-desktop"
-              type="submit"
-            >
-              <span class="add-button-desktop__cross-icon"></span>
-              <span>Add</span>
-            </button>
+      </form>
+    </div>
+    <div class="contact-container generic-container d-none" id="contact-container">
+      <h2 class="main-title">Contact us</h2>
+      <div class="contact-desktop-container">
+        <div class="contact-card">
+          <h2 class="contact-card__name">StarSheriff</h2>
+          <div class="contac-card__links">
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i><span
+                class="contact-card__link">Github</span></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i><span
+                class="contact-card__link">Linkedin</span></a>
           </div>
-          <button class="form-add__button add-button only-mobile" type="submit">
-            <span class="add-button__cross-icon"></span>
-          </button>
-        </form>
-      </div>
-      <div
-        class="contact-container generic-container d-none"
-        id="contact-container"
-      >
-        <h2 class="main-title">Contact us</h2>
-        <div class="contact-desktop-container">
-          <div class="contact-card">
-            <h2 class="contact-card__name">StarSheriff</h2>
-            <div class="contac-card__links">
-              <a href="#" target="_blank" rel="noopener noreferrer"
-                ><i class="fab fa-github"></i
-                ><span class="contact-card__link">Github</span></a
-              >
-              <a href="#" target="_blank" rel="noopener noreferrer"
-                ><i class="fab fa-linkedin"></i
-                ><span class="contact-card__link">Linkedin</span></a
-              >
-            </div>
-          </div>
-          <div class="contact-card">
-            <h2 class="contact-card__name">D4nielJ</h2>
-            <div class="contac-card__links">
-              <a href="#" target="_blank" rel="noopener noreferrer"
-                ><i class="fab fa-github"></i
-                ><span class="contact-card__link">Github</span></a
-              >
-              <a href="#" target="_blank" rel="noopener noreferrer"
-                ><i class="fab fa-linkedin"></i
-                ><span class="contact-card__link">Linkedin</span></a
-              >
-            </div>
+        </div>
+        <div class="contact-card">
+          <h2 class="contact-card__name">D4nielJ</h2>
+          <div class="contac-card__links">
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i><span
+                class="contact-card__link">Github</span></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i><span
+                class="contact-card__link">Linkedin</span></a>
           </div>
         </div>
       </div>
-    </main>
-    <footer class="only-desktop">
-      <p>© Copyright D4nielJ and StarSheriff2</p>
-    </footer>
-    <script type="module" src="assets/js/main.js"></script>
-  </body>
+    </div>
+  </main>
+  <footer class="only-desktop">
+    <p>© Copyright D4nielJ and StarSheriff2</p>
+  </footer>
+  <div id="visualViewport"></div>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+
 </html>

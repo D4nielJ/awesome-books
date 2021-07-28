@@ -1,10 +1,114 @@
 @use '../abstracts/' as *;
 @use '../vendor/breakpoints' as mq;
 
+.background {
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+
+  &__bcircle {
+    display: block;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 75%;
+    background: $blue;
+    bottom: -55%;
+    border-radius: 50%;
+
+    &--form {
+      padding: 100%;
+      right: 80%;
+      z-index: 2;
+    }
+
+    &--contact {
+      padding: 100%;
+      right: 20%;
+      bottom: unset;
+      top: -54%;
+    }
+  }
+
+  &__ycircle {
+    &--form {
+      display: block;
+      position: absolute;
+      right: -50%;
+      padding: 50%;
+      background: $yellow;
+      bottom: -35%;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    &--contact {
+      display: block;
+      position: absolute;
+      right: -30%;
+      background: $yellow;
+      bottom: -20%;
+      border-radius: 50%;
+      padding: 40%;
+    }
+  }
+}
+
+.overlay-nav {
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  width: 0%;
+  left: 0;
+  background-color: $yellow;
+  z-index: 10;
+  transition: width 0.5s;
+
+  &--show {
+    width: 100%;
+  }
+
+  &__nav-list {
+    padding-top: 30%;
+    padding-left: 4rem;
+    transform: translateX(-100%);
+    position: absolute;
+    top: 0;
+    left: -1000px;
+    transition: transform 0.1s;
+
+    &--overlay-transition {
+      transform: translateX(0%);
+      left: 0;
+    }
+
+    & li {
+      font-size: 4rem;
+      margin-bottom: 5rem;
+      font-weight: 500;
+      letter-spacing: 1rem;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2rem;
+    line-height: 3rem;
+  }
+}
+
 nav {
   margin: 0 auto;
   max-width: 72rem;
   padding: 1rem 2.7rem;
+  z-index: 20;
 
   @include d-flex(row, space-between);
 
@@ -16,11 +120,21 @@ nav {
     font-family: "Montserrat", sans-serif;
     letter-spacing: -0.165em;
     font-size: 3.5rem;
-    font-size: 3rem;
+    color: #fff;
+    cursor: unset;
+
+    & a:hover {
+      cursor: default;
+    }
+
+    &--black,
+    &--mobile-overlay {
+      color: #000;
+    }
   }
 
-  & .hamburguer-icon {
-    cursor: pointer;
+  & .hamburguer-button {
+    cursor: unset;
     padding-top: 0.5rem;
     padding-right: 0.5rem;
     border: none;
@@ -28,41 +142,68 @@ nav {
     position: relative;
 
     &__tap {
-      cursor: pointer;
-      background: transparent;
+      cursor: unset;
       display: block;
       position: absolute;
       top: 0;
-      right: 0;
-      width: 3.5rem;
-      height: 3rem;
+      right: -1.5rem;
+      width: 5rem;
+      height: 3.5rem;
     }
 
-    &__line {
+    &__icon {
       display: block;
+      position: absolute;
+      top: 0;
       width: 2.5rem;
-      height: 0.3rem;
-      background: #000;
-      position: relative;
+      left: 0;
+      z-index: 1000;
 
-      &::before {
-        content: "";
+      &--black {
+        background-color: #000 !important;
+      }
+
+      &__line_1 {
         display: block;
-        position: absolute;
         width: 2.5rem;
         height: 0.3rem;
-        background: #000;
+        background: $pale-yellow;
+        transition: transform 0.35s ease-in;
+
+        &--close-btn {
+          transition: transform 0.65s ease-in;
+          background-color: #000;
+          transform: rotate(45deg) translate(0.8rem, 0.8rem);
+        }
+      }
+
+      &__line_2 {
+        display: block;
+        position: absolute;
+        width: 2rem;
+        right: 0;
+        height: 0.3rem;
+        background: $pale-yellow;
         top: 0.8rem;
       }
 
-      &::after {
-        content: "";
+      &__line_3 {
         display: block;
         position: absolute;
         width: 2.5rem;
         height: 0.3rem;
-        background: #000;
+        background: $pale-yellow;
         top: 1.6rem;
+        transition: transform 0.35s ease-in;
+
+        &--close-btn {
+          transition: transform 0.65s ease-in;
+          transform: rotate(-45deg) translate(0.3rem, -0.4rem);
+        }
+      }
+
+      &--mobile-overlay {
+        background-color: #000;
       }
     }
   }
@@ -85,17 +226,20 @@ nav {
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 8rem 2.7rem 0 2rem;
+  padding: 8rem 2.7rem 0 2.7rem;
+}
+
+.books-index-container {
+  z-index: 5;
 }
 
 .generic-container {
-  @include d-flex(column, flex-start, flex-start);
+  @include d-flex(column, flex-start, center);
 
   padding-bottom: 4.4rem;
   border-radius: 25px;
   width: 100%;
-  background: #ddd;
-  // position: relative;
+  background-color: $pale-yellow;
 }
 
 .main-title {
@@ -103,7 +247,7 @@ nav {
   text-align: center;
   font-weight: bold;
   padding: 2.1rem 0;
-  background: #ccc;
+  background-color: $yellow;
   border-radius: 25px;
   font-size: 2.4rem;
   margin-bottom: 3.3rem;
@@ -117,44 +261,63 @@ nav {
   &__item {
     @include d-flex(row, center, stretch);
 
-    cursor: pointer;
-    background: rgb(235, 235, 235);
+    background-color: $light-yellow;
+    position: relative;
     margin-bottom: 3.4rem;
     border-radius: 1.2rem;
-    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s ease-in;
+
+    &--mouseover {
+      background-color: $yellow;
+      justify-content: space-between;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    &__title {
+      @include d-flex(column, center, center);
+
+      font-style: normal;
+      font-weight: 300;
+      font-size: 1.2rem;
+      padding: 0.7rem 0;
+
+      &--mouseover {
+        margin-left: 3rem;
+      }
+
+      & span {
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+      }
+    }
+
+    &__remove-btn {
+      background-color: $blue;
+      width: 60px;
+      border: none;
+      margin: 0;
+      border-radius: 1.2rem;
+      position: absolute;
+      right: -60px;
+      bottom: 0;
+      top: 0;
+      transition: transform 1.5s;
+
+      &--mouseover {
+        transform: translateX(-60px);
+        transition: transform 0.5s;
+      }
+
+      & .fa-trash-alt {
+        font-size: 2rem;
+        padding: 0 1.5rem;
+      }
+    }
 
     &:last-child {
       margin-bottom: 0;
-    }
-  }
-
-  &__remove-btn {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    border: none;
-    margin: 0;
-    border-radius: 1.2rem;
-
-    & .fa-trash-alt {
-      font-size: 2rem;
-      padding: 0 1.5rem;
-    }
-  }
-
-  &__title {
-    @include d-flex(column, center, center);
-
-    font-style: normal;
-    font-weight: 300;
-    font-size: 1.2rem;
-    padding: 0.7rem 0;
-
-    & span {
-      font-weight: 500;
-      font-size: 1.6rem;
-      line-height: 1.9rem;
     }
   }
 }
@@ -166,14 +329,13 @@ nav {
   border-radius: 50%;
   width: 4.4rem;
   height: 4.4rem;
-  position: absolute;
-  bottom: -2.2rem;
-  background: #000;
+  transform: translateY(150%);
+  background: $yellow;
 
   &__cross-icon {
     height: 0.4rem;
     width: 2.2rem;
-    background: #fff;
+    background: #000;
     position: relative;
 
     &::before {
@@ -182,7 +344,7 @@ nav {
       position: absolute;
       height: 0.4rem;
       width: 2.2rem;
-      background: #fff;
+      background: #000;
       transform: rotate(90deg);
     }
   }
@@ -196,20 +358,21 @@ nav {
 }
 
 .form-add {
-  @include d-flex(column, space-around, flex-start);
+  @include d-flex(column, space-around, center);
 
   border-radius: 25px;
   width: 100%;
-  background: #ddd;
+  background: $pale-yellow;
   position: relative;
   padding-bottom: 4.4rem;
+  z-index: 5;
 
   &__title {
     width: 100%;
     text-align: center;
     font-weight: bold;
     padding: 2.1rem 0;
-    background: #ccc;
+    background: $yellow;
     border-radius: 25px;
     font-size: 2.4rem;
     margin-bottom: 2rem;
@@ -224,13 +387,19 @@ nav {
       border-radius: 12px;
       border: none;
       margin: 1.5rem 0;
+      font-size: 2.4rem;
       text-align: center;
 
       &::placeholder {
-        font-size: 1.4rem;
+        font-size: 2.4rem;
+        color: $blue;
       }
     }
   }
+}
+
+.contact-container {
+  z-index: 5;
 }
 
 .contact-card {
@@ -266,6 +435,12 @@ nav {
     padding-right: 0.4rem;
     font-size: 1.8rem;
   }
+}
+
+#visualViewport {
+  position: fixed;
+  right: 0;
+  bottom: 0;
 }
 
 // Media Queries
